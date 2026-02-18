@@ -1,4 +1,4 @@
-import { ParallaxLayer } from '../my-portfolio-next/types';
+import { ParallaxLayer } from './types';
 import pic1 from "./assets/city1/1.png"
 import pic2 from "./assets/city1/2.png"
 import pic3 from "./assets/city1/3.png"
