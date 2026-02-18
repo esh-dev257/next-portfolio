@@ -1,302 +1,479 @@
 "use client";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import {
+  Folder,
+  FileCode,
+  HardDrive,
+  ChevronDown,
+  Monitor,
   Cpu,
-  Globe,
-  Database,
-  Wrench,
-  ChevronRight,
   Terminal,
-  Sparkles,
+  Layers,
+  Layout,
+  Palette,
+  Braces,
+  Code2,
+  Hexagon,
+  Server,
+  Database as DbIcon,
+  Box,
+  Plug,
+  GitBranch,
+  Cloud,
+  MessageSquare,
+  Flame,
+  Key,
+  Move,
+  Share2,
+  Boxes,
+  Component,
+  Triangle,
+  Shield,
+  TrendingUp,
+  TabletSmartphone,
+  Blocks,
+  Webhook,
+  CloudUpload,
+  Database,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
-const categories = [
+const fileSystem = [
   {
-    title: "Frontend",
-    icon: <Globe size={20} />,
-    color: "retro-cyan",
-    borderColor: "border-retro-cyan",
-    bgColor: "bg-retro-cyan",
-    textColor: "text-retro-cyan",
-    hoverGlowClass: "hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]",
-    bgTintColor: "bg-retro-cyan/20",
-    shadowColor: "shadow-retro-cyan/20",
-    description: "Crafting pixel-perfect interfaces",
-    items: [
-      { name: "React", icon: "⚛️" },
-      { name: "Next.js", icon: "▲" },
-      { name: "TypeScript", icon: "🔷" },
-      { name: "Tailwind CSS", icon: "🎨" },
-      { name: "JavaScript", icon: "⚡" },
-      { name: "HTML/CSS", icon: "🌐" },
+    id: "root",
+    name: "Skillset",
+    type: "drive",
+    icon: <HardDrive size={16} className="text-slate-400" />,
+    children: [
+      {
+        id: "languages",
+        name: "Languages",
+        type: "folder",
+        icon: <Folder size={16} className="text-red-400" />,
+        children: [
+          {
+            id: "cpp",
+            name: "C++",
+            icon: <Code2 />,
+            type: "Language",
+            ver: "20",
+            desc: "A high-performance language used for systems programming, game development, and competitive programming.",
+          },
+          {
+            id: "js",
+            name: "JavaScript ES6+",
+            icon: <Braces />,
+            type: "Language",
+            ver: "ES2022",
+            desc: "The core language of the web, enabling dynamic and interactive user experiences.",
+          },
+          {
+            id: "ts",
+            name: "TypeScript",
+            icon: <FileCode />,
+            type: "Language",
+            ver: "5.3.0",
+            desc: "A statically typed superset of JavaScript that enhances code quality and maintainability.",
+          },
+          {
+            id: "html",
+            name: "HTML5",
+            icon: <Code2 />,
+            type: "Markup",
+            ver: "5.2",
+            desc: "The standard markup language for creating web pages and web applications.",
+          },
+          {
+            id: "css",
+            name: "CSS3",
+            icon: <Palette />,
+            type: "Stylesheet",
+            ver: "Level 3",
+            desc: "The language for describing the presentation of web pages, including colors, layout, and fonts.",
+          },
+          {
+            id: "sql",
+            name: "SQL",
+            icon: <Database />,
+            type: "Query Language",
+            ver: "SQL:2023",
+            desc: "A standard language for storing, manipulating and retrieving data in relational databases.",
+          },
+        ],
+      },
+      {
+        id: "frontend",
+        name: "Frontend",
+        type: "folder",
+        icon: <Folder size={16} className="text-blue-400" />,
+        children: [
+          {
+            id: "react",
+            name: "React.js",
+            icon: <Layers />,
+            type: "Library",
+            ver: "18.2.0",
+            desc: "A JavaScript library for building user interfaces with a component-based architecture.",
+          },
+          {
+            id: "next",
+            name: "Next.js",
+            icon: <Layout />,
+            type: "Framework",
+            ver: "14.1.0",
+            desc: "The React Framework for production. Enables SSR, ISR, and edge routing capabilities.",
+          },
+          {
+            id: "redux",
+            name: "Redux Toolkit",
+            icon: <Boxes />,
+            type: "State Management",
+            ver: "2.1.0",
+            desc: "The official, opinionated, batteries-included toolset for efficient Redux development.",
+          },
+          {
+            id: "context",
+            name: "Context API",
+            icon: <Share2 />,
+            type: "React Feature",
+            ver: "18.2.0",
+            desc: "A React structure that allows passing data through the component tree without prop-drilling.",
+          },
+          {
+            id: "tailwind",
+            name: "Tailwind CSS",
+            icon: <Palette />,
+            type: "CSS Framework",
+            ver: "3.4.0",
+            desc: "A utility-first CSS framework for rapid UI development and composable design systems.",
+          },
+          {
+            id: "framer",
+            name: "Framer Motion",
+            icon: <Move />,
+            type: "Animation Library",
+            ver: "11.0",
+            desc: "A production-ready motion library for React, making complex animations simple.",
+          },
+          {
+            id: "bootstrap",
+            name: "Bootstrap",
+            icon: <Component />,
+            type: "CSS Framework",
+            ver: "5.3",
+            desc: "A popular front-end toolkit for designing responsive, mobile-first websites.",
+          },
+        ],
+      },
+      {
+        id: "backend",
+        name: "Backend & Cloud",
+        type: "folder",
+        icon: <Folder size={16} className="text-green-400" />,
+        children: [
+          {
+            id: "node",
+            name: "Node.js",
+            icon: <Hexagon />,
+            type: "Runtime",
+            ver: "20.11",
+            desc: "A JavaScript runtime built on Chrome's V8 engine, featuring asynchronous I/O.",
+          },
+          {
+            id: "express",
+            name: "Express.js",
+            icon: <Server />,
+            type: "Framework",
+            ver: "4.18",
+            desc: "A minimal and flexible Node.js web application framework for building APIs and web apps.",
+          },
+          {
+            id: "firebase",
+            name: "Firebase",
+            icon: <Flame />,
+            type: "BaaS",
+            ver: "Latest",
+            desc: "A platform by Google for creating mobile and web applications, offering a suite of cloud services.",
+          },
+          {
+            id: "mongo",
+            name: "MongoDB",
+            icon: <DbIcon />,
+            type: "NoSQL Database",
+            ver: "7.0",
+            desc: "A document-oriented NoSQL database used for high-volume data storage.",
+          },
+          {
+            id: "rest",
+            name: "RESTful APIs",
+            icon: <Plug />,
+            type: "API Architecture",
+            ver: "N/A",
+            desc: "An architectural style for designing networked applications, based on stateless communication.",
+          },
+          {
+            id: "cloudinary",
+            name: "Cloudinary",
+            icon: <CloudUpload />,
+            type: "Media Service",
+            ver: "Latest",
+            desc: "An end-to-end media management service for images and videos.",
+          },
+          {
+            id: "jwt",
+            name: "JWT Auth",
+            icon: <Key />,
+            type: "Authentication",
+            ver: "N/A",
+            desc: "JSON Web Tokens, a compact standard for creating access tokens for an application.",
+          },
+        ],
+      },
+      {
+        id: "concepts",
+        name: "Tools & Concepts",
+        type: "folder",
+        icon: <Folder size={16} className="text-yellow-400" />,
+        children: [
+          {
+            id: "git",
+            name: "Git/GitHub",
+            icon: <GitBranch />,
+            type: "VCS",
+            ver: "2.43",
+            desc: "Distributed version control and a collaborative platform for code hosting.",
+          },
+          {
+            id: "postman",
+            name: "Postman",
+            icon: <MessageSquare />,
+            type: "API Tool",
+            ver: "10.17",
+            desc: "A collaborative platform for API development, testing, and documentation.",
+          },
+          {
+            id: "vercel",
+            name: "Vercel",
+            icon: <Triangle />,
+            type: "Deployment",
+            ver: "Latest",
+            desc: "A cloud platform for static sites and Serverless Functions, specializing in Next.js.",
+          },
+          {
+            id: "recaptcha",
+            name: "reCAPTCHA",
+            icon: <Shield />,
+            type: "Security",
+            ver: "v3",
+            desc: "A Google service that helps protect sites from spam and abuse by distinguishing humans from bots.",
+          },
+          {
+            id: "seo",
+            name: "SEO",
+            icon: <TrendingUp />,
+            type: "Concept",
+            ver: "N/A",
+            desc: "Search Engine Optimization, the process of improving site quality to increase visibility.",
+          },
+          {
+            id: "responsive",
+            name: "Responsive Design",
+            icon: <TabletSmartphone />,
+            type: "Concept",
+            ver: "N/A",
+            desc: "A web design approach to make web pages render well on a variety of devices and screen sizes.",
+          },
+          {
+            id: "oops",
+            name: "OOPs",
+            icon: <Blocks />,
+            type: "Paradigm",
+            ver: "N/A",
+            desc: "Object-Oriented Programming, a paradigm based on the concept of 'objects'.",
+          },
+          {
+            id: "dsa",
+            name: "DSA",
+            icon: <Webhook />,
+            type: "Concept",
+            ver: "N/A",
+            desc: "Data Structures and Algorithms, the foundation for efficient problem-solving and software design.",
+          },
+        ],
+      },
     ],
-  },
-  {
-    title: "Backend",
-    icon: <Database size={20} />,
-    color: "retro-green",
-    borderColor: "border-retro-green",
-    bgColor: "bg-retro-green",
-    textColor: "text-retro-green",
-    hoverGlowClass: "hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]",
-    bgTintColor: "bg-retro-green/20",
-    shadowColor: "shadow-retro-green/20",
-    description: "Building robust server systems",
-    items: [
-      { name: "Node.js", icon: "🟢" },
-      { name: "Python", icon: "🐍" },
-      { name: "Express", icon: "🚂" },
-      { name: "MongoDB", icon: "🍃" },
-      { name: "PostgreSQL", icon: "🐘" },
-      { name: "REST APIs", icon: "🔌" },
-    ],
-  },
-  {
-    title: "Tools & Others",
-    icon: <Wrench size={20} />,
-    color: "retro-purple",
-    borderColor: "border-retro-purple",
-    bgColor: "bg-retro-purple",
-    textColor: "text-retro-purple",
-    hoverGlowClass: "hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]",
-    bgTintColor: "bg-retro-purple/20",
-    shadowColor: "shadow-retro-purple/20",
-    description: "Essential dev toolkit",
-    items: [{ name: "Git", icon: "📦" }],
   },
 ];
 
-const SkillCard: React.FC<{
-  skill: { name: string; icon: string };
-  category: (typeof categories)[0];
-  index: number;
-}> = ({ skill, category, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
+export default function Skills() {
+  const drive = fileSystem[0];
+  const folders = drive.children;
 
-  return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`
-        group relative bg-slate-800/50 border border-slate-700 p-4
-        hover:border-slate-500 hover:bg-slate-800/80 transition-all duration-500
-        ${category.hoverGlowClass} cursor-default overflow-hidden
-      `}
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      {/* Animated scan line on hover */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent
-          transition-transform duration-700 ${isHovered ? "translate-y-full" : "-translate-y-full"}`}
-      />
+  const [activeFolderId, setActiveFolderId] = useState("languages");
+  const [selectedFileId, setSelectedFileId] = useState<string | null>("cpp");
 
-      {/* Corner accents */}
-      <div
-        className={`absolute top-0 left-0 w-2 h-2 border-t border-l ${category.borderColor} 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-      />
-      <div
-        className={`absolute top-0 right-0 w-2 h-2 border-t border-r ${category.borderColor}
-          opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-      />
-      <div
-        className={`absolute bottom-0 left-0 w-2 h-2 border-b border-l ${category.borderColor}
-          opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-      />
-      <div
-        className={`absolute bottom-0 right-0 w-2 h-2 border-b border-r ${category.borderColor}
-          opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-      />
-
-      {/* Background glow pulse */}
-      <div
-        className={`absolute -inset-1 ${category.bgTintColor} opacity-0 group-hover:opacity-100 
-          blur-xl transition-opacity duration-500 -z-10`}
-      />
-
-      <div className="relative flex items-center gap-3">
-        {/* Icon container */}
-        <div
-          className={`
-            w-10 h-10 flex items-center justify-center text-lg
-            border ${category.borderColor} ${category.bgTintColor}
-            group-hover:scale-110 transition-transform duration-300
-          `}
-        >
-          {skill.icon}
-        </div>
-
-        {/* Skill name */}
-        <div className="flex-1">
-          <span
-            className={`font-retro text-base text-gray-300 group-hover:${category.textColor} transition-colors duration-300`}
-          >
-            {skill.name}
-          </span>
-
-          {/* Animated underline */}
-          <div className="mt-1 h-px w-0 group-hover:w-full transition-all duration-500">
-            <div className={`h-full ${category.bgColor}`} />
-          </div>
-        </div>
-
-        {/* Chevron */}
-        <ChevronRight
-          size={16}
-          className={`${category.textColor} opacity-0 group-hover:opacity-100 
-            -translate-x-2 group-hover:translate-x-0 transition-all duration-300`}
-        />
-      </div>
-
-      {/* Decorative pixel dots */}
-      <div className="absolute bottom-1 right-2 flex gap-1 opacity-0 group-hover:opacity-50 transition-opacity duration-500">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className={`w-1 h-1 ${category.bgColor}`}
-            style={{ animationDelay: `${i * 150}ms` }}
-          />
-        ))}
-      </div>
-    </div>
+  const activeFolder =
+    folders.find((f) => f.id === activeFolderId) || folders[0];
+  const selectedFile = activeFolder.children?.find(
+    (f) => f.id === selectedFileId,
   );
-};
 
-export default function SkillsSection() {
-  const [activeCategory, setActiveCategory] = useState(0);
-
-  const activeCat = categories[activeCategory];
+  const handleFolderClick = (folderId: string) => {
+    setActiveFolderId(folderId);
+    const firstFileId =
+      folders.find((f) => f.id === folderId)?.children?.[0]?.id || null;
+    setSelectedFileId(firstFileId);
+  };
 
   return (
-    <section id="skills" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
-      <SectionHeader title="Skill Tree" icon={<Cpu size={32} />} />
+    <section
+      id="skills"
+      className="py-16 px-4 md:px-8 max-w-6xl mx-auto border-t-4 border-dashed border-gray-700"
+    >
+      <SectionHeader title="Skills" icon={<Cpu size={24} />} />
 
-      {/* Category Tabs */}
-      <div className="flex flex-wrap justify-center gap-4 mb-10">
-        {categories.map((cat, idx) => (
-          <button
-            key={idx}
-            onClick={() => setActiveCategory(idx)}
-            className={`
-              font-pixel text-sm px-6 py-3 border-4 transition-all duration-300
-              flex items-center gap-2 relative overflow-hidden
-              ${
-                activeCategory === idx
-                  ? `${cat.borderColor} ${cat.textColor} bg-slate-800 scale-105`
-                  : "border-slate-600 text-gray-500 bg-slate-900 hover:border-slate-400 hover:text-gray-300"
-              }
-            `}
-          >
-            {/* Active tab glow */}
-            {activeCategory === idx && (
-              <div
-                className={`absolute inset-0 ${cat.bgTintColor} opacity-30`}
-              />
-            )}
-            <span className="relative">{cat.icon}</span>
-            <span className="relative">{cat.title}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Active Category Content */}
-      <div className="relative">
-        {/* Decorative corner brackets */}
-        <div
-          className={`absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 ${activeCat.borderColor}`}
-        />
-        <div
-          className={`absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 ${activeCat.borderColor}`}
-        />
-        <div
-          className={`absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 ${activeCat.borderColor}`}
-        />
-        <div
-          className={`absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 ${activeCat.borderColor}`}
-        />
-
-        <div className="bg-slate-900/80 border-2 border-slate-700 p-6 md:p-8">
-          {/* Header */}
-          <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-700">
-            <div
-              className={`p-2 ${activeCat.bgTintColor} border ${activeCat.borderColor}
-                shadow-lg ${activeCat.shadowColor}`}
-            >
-              {activeCat.icon}
-            </div>
-            <div>
-              <h3 className={`font-pixel text-lg ${activeCat.textColor}`}>
-                {activeCat.title}
-              </h3>
-              <p className="font-retro text-xs text-gray-500 mt-1">
-                {activeCat.description}
-              </p>
-            </div>
-            <div className="ml-auto flex items-center gap-2">
-              <Sparkles size={14} className={activeCat.textColor} />
-              <span className={`font-pixel text-xs ${activeCat.textColor}`}>
-                {activeCat.items.length} UNLOCKED
-              </span>
-            </div>
-          </div>
-
-          {/* Terminal-style decorator */}
-          <div className="flex items-center gap-2 mb-4 px-2">
-            <Terminal size={12} className="text-gray-600" />
-            <span className="font-pixel text-[10px] text-gray-600">
-              ~/skills/{activeCat.title.toLowerCase().replace(/ & /g, "-")}
-            </span>
-            <span className="font-pixel text-[10px] text-gray-600 animate-pulse">
-              █
+      <div className="max-w-5xl mx-auto bg-slate-800/50 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
+        <div className="bg-slate-900/80 px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
+          <div className="flex items-center gap-2">
+            <Monitor size={14} className="text-cyan-400" />
+            <span className="font-pixel text-xs text-slate-300 tracking-wider">
+              SKILL_EXPLORER.EXE
             </span>
           </div>
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-yellow-400" />
+            <div className="w-3 h-3 rounded-full bg-green-400" />
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+          </div>
+        </div>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {activeCat.items.map((skill, sIdx) => (
-              <SkillCard
-                key={sIdx}
-                skill={skill}
-                category={activeCat}
-                index={sIdx}
-              />
-            ))}
+        <div className="bg-slate-800 p-2 flex gap-2 items-center border-b border-slate-700">
+          <div className="flex gap-1 text-slate-500">
+            {/* These are just decorative, no functionality needed */}
+          </div>
+          <div className="flex-1 bg-slate-900 border border-slate-700 rounded-md px-2 py-1 text-xs font-mono text-slate-300 flex items-center gap-2 overflow-x-auto">
+            <span className="text-slate-500">{drive.name}:</span>
+            <span className="text-slate-600">/</span>
+            <span className="text-cyan-400">
+              {activeFolder.name.toUpperCase()}
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row h-[550px] bg-slate-900/50 font-sans text-slate-300">
+          <div className="w-full md:w-56 bg-black/10 border-r border-slate-800 p-2 overflow-y-auto">
+            <div className="font-mono text-sm space-y-1">
+              <div>
+                <div className="flex items-center gap-2 py-1 px-2 text-slate-400">
+                  <ChevronDown size={16} />
+                  {drive.icon}
+                  <span>{drive.name}</span>
+                </div>
+                <div className="pl-4 border-l border-dotted border-slate-700 ml-4">
+                  {folders.map((folder) => (
+                    <div
+                      key={folder.id}
+                      onClick={() => handleFolderClick(folder.id)}
+                      className={`flex items-center gap-2 py-1.5 px-3 cursor-pointer rounded-md transition-colors ${
+                        activeFolderId === folder.id
+                          ? "bg-cyan-500/20 text-cyan-300"
+                          : "hover:bg-slate-700/50 text-slate-400"
+                      }`}
+                    >
+                      {folder.icon}
+                      <span>{folder.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Footer */}
-          <div className="mt-8 pt-4 border-t border-slate-700">
-            <div className="flex items-center justify-center gap-3">
-              {/* Animated dots */}
-              <div className="flex gap-1">
-                {categories.map((cat, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveCategory(idx)}
-                    className={`w-3 h-3 border transition-all duration-300 ${
-                      activeCategory === idx
-                        ? `${cat.bgColor} ${cat.borderColor} scale-125`
-                        : "bg-slate-800 border-slate-600 hover:border-slate-400"
+          <div className="flex-1 bg-black/20 p-4 overflow-y-auto">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 content-start">
+              {activeFolder.children?.map((file) => (
+                <button
+                  key={file.id}
+                  onClick={() => setSelectedFileId(file.id)}
+                  className={`group flex flex-col items-center gap-2 p-2 rounded-lg transition-colors ${
+                    selectedFileId === file.id
+                      ? "bg-cyan-500/30"
+                      : "hover:bg-slate-700/50"
+                  }`}
+                >
+                  <div className="w-14 h-14 flex items-center justify-center text-3xl transition-transform group-hover:scale-110 duration-200 text-slate-300 group-hover:text-cyan-300">
+                    {file.icon}
+                  </div>
+                  <span
+                    className={`text-xs font-mono text-center w-full truncate px-1 py-0.5 rounded-sm transition-colors ${
+                      selectedFileId === file.id
+                        ? "bg-cyan-500 text-slate-900"
+                        : "text-slate-300"
                     }`}
-                  />
-                ))}
-              </div>
-
-              <div className="w-px h-4 bg-slate-700" />
-
-              {/* Total skills count */}
-              <div className="flex items-center gap-2">
-                <span className="font-pixel text-[10px] text-gray-500">
-                  TOTAL ARSENAL:
-                </span>
-                <span className={`font-pixel text-sm ${activeCat.textColor}`}>
-                  {categories.reduce((acc, cat) => acc + cat.items.length, 0)}{" "}
-                  SKILLS
-                </span>
-              </div>
+                  >
+                    {file.name}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
+
+          {selectedFile && (
+            <div className="w-full md:w-72 bg-black/30 border-l border-slate-800 flex flex-col">
+              <div className="p-4 border-b border-slate-800 text-center flex flex-col items-center">
+                <div className="text-5xl mb-3 text-cyan-400">
+                  {selectedFile.icon}
+                </div>
+                <h3 className="font-bold text-base text-slate-100">
+                  {selectedFile.name}
+                </h3>
+                <p className="text-xs text-slate-400">{selectedFile.type}</p>
+              </div>
+
+              <div className="p-4 flex-1 overflow-y-auto">
+                <div className="space-y-4 font-mono text-xs">
+                  <div>
+                    <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
+                      Description
+                    </span>
+                    <p className="text-slate-300 mt-1 leading-relaxed">
+                      {selectedFile.desc}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
+                      Version
+                    </span>
+                    <span className="text-slate-300">{selectedFile.ver}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
+                      Status
+                    </span>
+                    <span className="text-green-400 font-bold flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                      INSTALLED & ACTIVE
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-3 bg-slate-900/50 border-t border-slate-800">
+                <button className="w-full bg-slate-700/80 border border-slate-600 rounded-md py-2 px-2 text-xs font-mono text-slate-300 hover:bg-slate-700 active:bg-slate-600 shadow-sm flex items-center justify-center gap-2">
+                  <Terminal size={14} />
+                  EXECUTE
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-slate-800/80 px-3 py-1 text-xs font-mono text-slate-500 border-t border-slate-700 flex justify-between">
+          <div className="flex gap-4">
+            <span>{activeFolder.children?.length} object(s)</span>
+            <span>{selectedFile ? "1 selected" : "0 selected"}</span>
+          </div>
+          <div>{drive.name}\</div>
         </div>
       </div>
     </section>
