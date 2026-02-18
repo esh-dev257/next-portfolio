@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
         </div>
 
         <h1 className="font-pixel text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-relaxed">
-          PLAYER: <span className="text-retro-pink">ESHITA BHAWSAR</span>
+          PLAYER:<span className="text-retro-pink">ESHITA BHAWSAR</span>
         </h1>
 
         <div className="flex items-center justify-center gap-3 font-retro text-2xl sm:text-4xl text-retro-green mb-8 h-10">
