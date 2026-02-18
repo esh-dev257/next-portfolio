@@ -43,7 +43,7 @@ const Achievements: React.FC = () => {
           <div key={idx} className={`bg-slate-900 border-4 ${item.color} p-4 flex flex-col items-center text-center shadow-pixel hover:-translate-y-2 transition-transform group relative overflow-hidden`}>
             
             {/* Shine Effect */}
-            <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
+            <div className="absolute top-0 -inset-full h-full w-1/2 z-[5] block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
 
             <div className="bg-slate-800 p-4 rounded-full border-2 border-white mb-4 shadow-inner group-hover:scale-110 transition-transform">
                 {item.icon}

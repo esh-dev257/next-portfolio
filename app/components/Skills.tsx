@@ -21,7 +21,8 @@ const categories = [
     borderColor: "border-retro-cyan",
     bgColor: "bg-retro-cyan",
     textColor: "text-retro-cyan",
-    glowColor: "shadow-[0_0_15px_rgba(34,211,238,0.3)]",
+    hoverGlowClass: "hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]",
+    bgTintColor: "bg-retro-cyan/20",
     items: [
       { name: "React", level: 90 },
       { name: "Next.js", level: 85 },
@@ -38,7 +39,8 @@ const categories = [
     borderColor: "border-retro-green",
     bgColor: "bg-retro-green",
     textColor: "text-retro-green",
-    glowColor: "shadow-[0_0_15px_rgba(34,197,94,0.3)]",
+    hoverGlowClass: "hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]",
+    bgTintColor: "bg-retro-green/20",
     items: [
       { name: "Node.js", level: 85 },
       { name: "Python", level: 80 },
@@ -55,7 +57,8 @@ const categories = [
     borderColor: "border-retro-purple",
     bgColor: "bg-retro-purple",
     textColor: "text-retro-purple",
-    glowColor: "shadow-[0_0_15px_rgba(168,85,247,0.3)]",
+    hoverGlowClass: "hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]",
+    bgTintColor: "bg-retro-purple/20",
     items: [{ name: "Git", level: 85 }],
   },
 ];
@@ -68,14 +71,12 @@ const PixelBar: React.FC<{ level: number; colorClass: string }> = ({
   const filledBlocks = Math.round(level / 10);
 
   return (
-    <div className="flex gap-0.75 items-center">
+    <div className="flex gap-1 items-center">
       {Array.from({ length: totalBlocks }).map((_, i) => (
         <div
           key={i}
           className={`h-4 w-3 transition-all duration-300 ${
-            i < filledBlocks
-              ? `${colorClass} opacity-${100 - (filledBlocks - 1 - i) * 5}`
-              : "bg-slate-700/50"
+            i < filledBlocks ? colorClass : "bg-slate-700/50"
           }`}
           style={{
             opacity: i < filledBlocks ? 0.5 + (i / filledBlocks) * 0.5 : 0.2,
@@ -115,7 +116,7 @@ export default function SkillsSection() {
               flex items-center gap-2
               ${
                 activeCategory === idx
-                  ? `${cat.borderColor} ${cat.textColor} bg-slate-800 ${cat.glowColor} scale-105`
+                  ? `${cat.borderColor} ${cat.textColor} bg-slate-800 scale-105`
                   : "border-slate-600 text-gray-500 bg-slate-900 hover:border-slate-400 hover:text-gray-300"
               }
             `}
@@ -146,7 +147,7 @@ export default function SkillsSection() {
           {/* Header */}
           <div className="flex items-center gap-3 mb-8 pb-4 border-b border-slate-700">
             <div
-              className={`p-2 ${categories[activeCategory].bgColor}/20 border ${categories[activeCategory].borderColor}`}
+              className={`p-2 ${categories[activeCategory].bgTintColor} border ${categories[activeCategory].borderColor}`}
             >
               {categories[activeCategory].icon}
             </div>
@@ -186,7 +187,7 @@ export default function SkillsSection() {
                   className={`
                     group relative bg-slate-800/50 border border-slate-700 p-4
                     hover:border-slate-500 hover:bg-slate-800 transition-all duration-300
-                    hover:${categories[activeCategory].glowColor}
+                    ${categories[activeCategory].hoverGlowClass}
                   `}
                   style={{ animationDelay: `${sIdx * 100}ms` }}
                 >
