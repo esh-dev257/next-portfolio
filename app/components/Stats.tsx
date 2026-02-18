@@ -16,9 +16,7 @@ import dynamic from "next/dynamic";
 // Render GitHub calendar only on client to avoid SSR/CSR markup mismatch
 const GitHubCalendar: any = dynamic(
   () =>
-    import("react-github-calendar").then(
-      (mod) => mod.GitHubCalendar || mod.default || mod,
-    ),
+    import("react-github-calendar").then((mod) => mod.GitHubCalendar || mod),
   { ssr: false },
 );
 
