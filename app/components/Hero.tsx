@@ -33,29 +33,31 @@ const Hero: React.FC = () => {
           <PixelAvatar />
         </div>
 
-        <h1 className="font-pixel text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 text-white leading-relaxed">
-          PLAYER:<span className="text-retro-pink">ESHITA BHAWSAR</span>
+        <h1 className="font-pixel text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white leading-tight sm:leading-relaxed">
+          PLAYER:<span className="text-retro-pink block sm:inline mt-2 sm:mt-0">ESHITA BHAWSAR</span>
         </h1>
 
-        <div className="flex items-center justify-center gap-3 font-retro text-2xl sm:text-4xl text-retro-green mb-8 h-10">
-          <Terminal size={32} />
-          <span>{text}</span>
+        <div className="flex items-center justify-center gap-2 sm:gap-3 font-retro text-lg sm:text-3xl md:text-4xl text-retro-green mb-6 sm:mb-8 min-h-[2.5rem] sm:min-h-[2.5rem]">
+          <Terminal size={20} className="sm:hidden" />
+          <Terminal size={28} className="hidden sm:block md:hidden" />
+          <Terminal size={32} className="hidden md:block" />
+          <span className="truncate">{text}</span>
           <span className="animate-ping">_</span>
         </div>
 
-        <p className="font-retro text-xl sm:text-2xl text-retro-comment max-w-2xl mx-auto leading-relaxed">
+        <p className="font-retro text-base sm:text-xl md:text-2xl text-retro-comment max-w-2xl mx-auto leading-relaxed px-2">
           Constructing scalable digital worlds. Specializing in component-driven
           architecture and high-performance React applications.
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <div className="bg-slate-800 border-2 border-slate-600 px-4 py-2 font-pixel text-xs text-retro-yellow">
+        <div className="mt-6 sm:mt-10 flex flex-wrap justify-center gap-2 sm:gap-4">
+          <div className="bg-slate-800 border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-yellow">
             Level: 22
           </div>
-          <div className="bg-slate-800 border-2 border-slate-600 px-4 py-2 font-pixel text-xs text-retro-cyan">
+          <div className="bg-slate-800 border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-cyan">
             Class: Engineer
           </div>
-          <div className="bg-slate-800 border-2 border-slate-600 px-4 py-2 font-pixel text-xs text-retro-green">
+          <div className="bg-slate-800 border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-green">
             Status: Online
           </div>
         </div>

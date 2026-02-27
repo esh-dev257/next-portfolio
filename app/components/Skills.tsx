@@ -333,55 +333,57 @@ export default function Skills() {
       <SectionHeader title="Skills" icon={<Cpu size={24} />} />
 
       <div className="max-w-5xl mx-auto bg-slate-800/50 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
-        <div className="bg-slate-900/80 px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
-          <div className="flex items-center gap-2">
-            <Monitor size={14} className="text-cyan-400" />
-            <span className="font-pixel text-xs text-slate-300 tracking-wider">
+        <div className="bg-slate-900/80 px-2 sm:px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Monitor size={12} className="text-cyan-400 sm:hidden" />
+            <Monitor size={14} className="text-cyan-400 hidden sm:block" />
+            <span className="font-pixel text-[10px] sm:text-xs text-slate-300 tracking-wider truncate">
               SKILL_EXPLORER.EXE
             </span>
           </div>
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-yellow-400" />
-            <div className="w-3 h-3 rounded-full bg-green-400" />
-            <div className="w-3 h-3 rounded-full bg-red-500" />
+          <div className="flex gap-1.5 sm:gap-2">
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-400" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400" />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500" />
           </div>
         </div>
 
-        <div className="bg-slate-800 p-2 flex gap-2 items-center border-b border-slate-700">
+        <div className="bg-slate-800 p-1.5 sm:p-2 flex gap-2 items-center border-b border-slate-700">
           <div className="flex gap-1 text-slate-500">
             {/* These are just decorative, no functionality needed */}
           </div>
-          <div className="flex-1 bg-slate-900 border border-slate-700 rounded-md px-2 py-1 text-xs font-mono text-slate-300 flex items-center gap-2 overflow-x-auto">
-            <span className="text-slate-500">{drive.name}:</span>
+          <div className="flex-1 bg-slate-900 border border-slate-700 rounded-md px-2 py-1 text-[10px] sm:text-xs font-mono text-slate-300 flex items-center gap-1 sm:gap-2 overflow-x-auto">
+            <span className="text-slate-500 whitespace-nowrap">{drive.name}:</span>
             <span className="text-slate-600">/</span>
-            <span className="text-cyan-400">
+            <span className="text-cyan-400 truncate">
               {activeFolder.name.toUpperCase()}
             </span>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row h-[550px] bg-slate-900/50 font-sans text-slate-300">
-          <div className="w-full md:w-56 bg-black/10 border-r border-slate-800 p-2 overflow-y-auto">
-            <div className="font-mono text-sm space-y-1">
+        <div className="flex flex-col lg:flex-row min-h-[400px] sm:min-h-[500px] lg:h-[550px] bg-slate-900/50 font-sans text-slate-300">
+          <div className="w-full lg:w-56 bg-black/10 border-b lg:border-b-0 lg:border-r border-slate-800 p-2 overflow-y-auto max-h-[200px] lg:max-h-none">
+            <div className="font-mono text-xs sm:text-sm space-y-1">
               <div>
-                <div className="flex items-center gap-2 py-1 px-2 text-slate-400">
-                  <ChevronDown size={16} />
+                <div className="flex items-center gap-2 py-1 px-2 text-slate-400 text-xs sm:text-sm">
+                  <ChevronDown size={14} className="sm:hidden" />
+                  <ChevronDown size={16} className="hidden sm:block" />
                   {drive.icon}
-                  <span>{drive.name}</span>
+                  <span className="truncate">{drive.name}</span>
                 </div>
-                <div className="pl-4 border-l border-dotted border-slate-700 ml-4">
+                <div className="pl-2 sm:pl-4 border-l border-dotted border-slate-700 ml-2 sm:ml-4 lg:block flex flex-wrap gap-1 lg:gap-0">
                   {folders.map((folder) => (
                     <div
                       key={folder.id}
                       onClick={() => handleFolderClick(folder.id)}
-                      className={`flex items-center gap-2 py-1.5 px-3 cursor-pointer rounded-md transition-colors ${
+                      className={`flex items-center gap-1 sm:gap-2 py-1.5 px-2 sm:px-3 cursor-pointer rounded-md transition-colors touch-manipulation text-xs sm:text-sm ${
                         activeFolderId === folder.id
                           ? "bg-cyan-500/20 text-cyan-300"
-                          : "hover:bg-slate-700/50 text-slate-400"
+                          : "hover:bg-slate-700/50 active:bg-slate-700/70 text-slate-400"
                       }`}
                     >
                       {folder.icon}
-                      <span>{folder.name}</span>
+                      <span className="whitespace-nowrap">{folder.name}</span>
                     </div>
                   ))}
                 </div>
@@ -389,23 +391,23 @@ export default function Skills() {
             </div>
           </div>
 
-          <div className="flex-1 bg-black/20 p-4 overflow-y-auto">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 content-start">
+          <div className="flex-1 bg-black/20 p-3 sm:p-4 overflow-y-auto">
+            <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4 content-start">
               {activeFolder.children?.map((file) => (
                 <button
                   key={file.id}
                   onClick={() => setSelectedFileId(file.id)}
-                  className={`group flex flex-col items-center gap-2 p-2 rounded-lg transition-colors ${
+                  className={`group flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 rounded-lg transition-colors touch-manipulation ${
                     selectedFileId === file.id
                       ? "bg-cyan-500/30"
-                      : "hover:bg-slate-700/50"
+                      : "hover:bg-slate-700/50 active:bg-slate-700/70"
                   }`}
                 >
-                  <div className="w-14 h-14 flex items-center justify-center text-3xl transition-transform group-hover:scale-110 duration-200 text-slate-300 group-hover:text-cyan-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center text-2xl sm:text-3xl transition-transform group-hover:scale-110 duration-200 text-slate-300 group-hover:text-cyan-300">
                     {file.icon}
                   </div>
                   <span
-                    className={`text-xs font-mono text-center w-full truncate px-1 py-0.5 rounded-sm transition-colors ${
+                    className={`text-[10px] sm:text-xs font-mono text-center w-full truncate px-1 py-0.5 rounded-sm transition-colors ${
                       selectedFileId === file.id
                         ? "bg-cyan-500 text-slate-900"
                         : "text-slate-300"
@@ -419,24 +421,24 @@ export default function Skills() {
           </div>
 
           {selectedFile && (
-            <div className="w-full md:w-72 bg-black/30 border-l border-slate-800 flex flex-col">
-              <div className="p-4 border-b border-slate-800 text-center flex flex-col items-center">
-                <div className="text-5xl mb-3 text-cyan-400">
+            <div className="w-full lg:w-72 bg-black/30 border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col">
+              <div className="p-3 sm:p-4 border-b border-slate-800 text-center flex flex-col items-center">
+                <div className="text-4xl sm:text-5xl mb-2 sm:mb-3 text-cyan-400">
                   {selectedFile.icon}
                 </div>
-                <h3 className="font-bold text-base text-slate-100">
+                <h3 className="font-bold text-sm sm:text-base text-slate-100">
                   {selectedFile.name}
                 </h3>
                 <p className="text-xs text-slate-400">{selectedFile.type}</p>
               </div>
 
-              <div className="p-4 flex-1 overflow-y-auto">
-                <div className="space-y-4 font-mono text-xs">
+              <div className="p-3 sm:p-4 flex-1 overflow-y-auto">
+                <div className="space-y-3 sm:space-y-4 font-mono text-xs">
                   <div>
                     <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
                       Description
                     </span>
-                    <p className="text-slate-300 mt-1 leading-relaxed">
+                    <p className="text-slate-300 mt-1 leading-relaxed text-[11px] sm:text-xs">
                       {selectedFile.desc}
                     </p>
                   </div>
@@ -444,13 +446,13 @@ export default function Skills() {
                     <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
                       Version
                     </span>
-                    <span className="text-slate-300">{selectedFile.ver}</span>
+                    <span className="text-slate-300 text-[11px] sm:text-xs">{selectedFile.ver}</span>
                   </div>
                   <div>
                     <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
                       Status
                     </span>
-                    <span className="text-green-400 font-bold flex items-center gap-1.5">
+                    <span className="text-green-400 font-bold flex items-center gap-1.5 text-[11px] sm:text-xs">
                       <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                       INSTALLED & ACTIVE
                     </span>
@@ -458,8 +460,8 @@ export default function Skills() {
                 </div>
               </div>
 
-              <div className="p-3 bg-slate-900/50 border-t border-slate-800">
-                <button className="w-full bg-slate-700/80 border border-slate-600 rounded-md py-2 px-2 text-xs font-mono text-slate-300 hover:bg-slate-700 active:bg-slate-600 shadow-sm flex items-center justify-center gap-2">
+              <div className="p-2 sm:p-3 bg-slate-900/50 border-t border-slate-800">
+                <button className="w-full bg-slate-700/80 border border-slate-600 rounded-md py-2 px-2 text-xs font-mono text-slate-300 hover:bg-slate-700 active:bg-slate-600 shadow-sm flex items-center justify-center gap-2 touch-manipulation">
                   <Terminal size={14} />
                   EXECUTE
                 </button>
@@ -468,12 +470,12 @@ export default function Skills() {
           )}
         </div>
 
-        <div className="bg-slate-800/80 px-3 py-1 text-xs font-mono text-slate-500 border-t border-slate-700 flex justify-between">
-          <div className="flex gap-4">
-            <span>{activeFolder.children?.length} object(s)</span>
-            <span>{selectedFile ? "1 selected" : "0 selected"}</span>
+        <div className="bg-slate-800/80 px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-mono text-slate-500 border-t border-slate-700 flex justify-between items-center">
+          <div className="flex gap-2 sm:gap-4 truncate">
+            <span className="whitespace-nowrap">{activeFolder.children?.length} object(s)</span>
+            <span className="hidden sm:inline">{selectedFile ? "1 selected" : "0 selected"}</span>
           </div>
-          <div>{drive.name}\</div>
+          <div className="whitespace-nowrap">{drive.name}\</div>
         </div>
       </div>
     </section>

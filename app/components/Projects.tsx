@@ -34,7 +34,7 @@ const mlProjects = [
     glowColor: "rgba(168,85,247,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(168,85,247,0.3)]",
     description:
-      "Machine learning model that predicts passenger survival on the Titanic based on various features like age, class, and gender.",
+      "Machine learning model that predicts passenger survival on the Titanic based on various features. Built using React, Tailwind CSS for the frontend, and Python ML libraries (Scikit-learn, Pandas) for data processing and model training.",
     link: "https://titanic-expedition-ml-theta.vercel.app/",
     tags: [],
     image: titanic,
@@ -49,7 +49,7 @@ const mlProjects = [
     glowColor: "rgba(34,197,94,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(34,197,94,0.3)]",
     description:
-      "Deep learning model for detecting and classifying brain tumors from MRI scans using convolutional neural networks.",
+      "Deep learning model for detecting and classifying brain tumors from MRI scans using CNNs. Built with React and Tailwind CSS for the UI, leveraging Python ML libraries (TensorFlow, Keras) for neural network training and inference.",
     link: "https://brain-tumor-prediction-five.vercel.app/",
     tags: [],
     image: brain,
@@ -64,7 +64,7 @@ const mlProjects = [
     glowColor: "rgba(236,72,153,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(236,72,153,0.3)]",
     description:
-      "Adversarial attack demonstration showing how to modify images to fool AI classification models.",
+      "Adversarial attack demonstration showing how to modify images to fool AI classification models. Built using React and Tailwind CSS, with Python ML libraries (TensorFlow, NumPy) for adversarial perturbation generation and model manipulation.",
     link: "https://modify-images-and-trick-ai.vercel.app/",
     tags: [],
     image: trick,
@@ -79,7 +79,7 @@ const mlProjects = [
     glowColor: "rgba(34,211,238,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(34,211,238,0.3)]",
     description:
-      "Neural network model that recognizes handwritten digits and characters with real-time drawing interface.",
+      "Neural network model that recognizes handwritten digits and characters with real-time drawing interface. Developed using React and Tailwind CSS for the interactive UI, powered by Python ML libraries (TensorFlow, Keras) and JavaScript ML (TensorFlow.js) for model inference.",
     link: "https://handwriting-recognition-xi.vercel.app/",
     tags: [],
     image: handwriting,
