@@ -212,7 +212,9 @@ const Contact: React.FC = () => {
                 </a>
 
                 <a
-                  href="#"
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-slate-900 p-3 border-2 border-white hover:border-retro-pink hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
                   title="Download Resume"
                 >

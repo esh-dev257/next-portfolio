@@ -9,6 +9,45 @@ body {
   font-family: 'VT323', monospace;
 }
 
+/* Calming Pixel Art Landscape Background */
+.pixel-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url('/Calming pixel art landscape.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+/* Dark overlay + scanlines for readability and retro feel */
+.pixel-bg::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    /* Dark overlay to keep text readable */
+    linear-gradient(
+      to bottom,
+      rgba(26, 27, 38, 0.7) 0%,
+      rgba(26, 27, 38, 0.55) 40%,
+      rgba(26, 27, 38, 0.4) 70%,
+      rgba(26, 27, 38, 0.3) 100%
+    ),
+    /* CRT scanlines */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+  background-size: 100% 100%, 100% 4px;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
@@ -22,4 +61,82 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #bd93f9;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile menu slide-down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease-out forwards;
+}
+
+/* ── Retro decoration animations ── */
+
+@keyframes retroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes retroTwinkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(0.6); }
+}
+
+@keyframes retroPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes retroLoadingFill {
+  0% { width: 0%; }
+  80% { width: 85%; }
+  90% { width: 85%; }
+  100% { width: 100%; }
+}
+
+.retro-float {
+  animation: retroFloat 4s ease-in-out infinite;
+}
+.retro-float-delay {
+  animation: retroFloat 5s ease-in-out 1.5s infinite;
+}
+
+.retro-twinkle {
+  animation: retroTwinkle 2.5s ease-in-out infinite;
+}
+.retro-twinkle-delay {
+  animation: retroTwinkle 3s ease-in-out 1s infinite;
+}
+
+.retro-pulse {
+  animation: retroPulse 2s ease-in-out infinite;
+}
+.retro-pulse-delay {
+  animation: retroPulse 2.5s ease-in-out 0.8s infinite;
+}
+
+.retro-loading-fill {
+  height: 100%;
+  background: #41fa75;
+  animation: retroLoadingFill 3s ease-in-out infinite;
+}
+
+.retro-dialog {
+  width: 120px;
+  border: 2px solid #f8f8f2;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
