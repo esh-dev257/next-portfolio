@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
         />
       )}
 
-      <div className="bg-slate-800 border-4 border-white p-6 sm:p-10 shadow-pixel relative">
+      <div className="bg-[#261a22] border-4 border-white p-6 sm:p-10 shadow-pixel relative">
         <div className="absolute top-2 right-2 flex gap-1">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter your name..."
-                className="bg-slate-900 border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none placeholder:text-slate-600 placeholder:text-sm"
+                className="bg-[#1e1218] border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none placeholder:text-slate-600 placeholder:text-sm"
                 required
                 disabled={isSending}
               />
@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 placeholder="What's your quest about?"
-                className="bg-slate-900 border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none placeholder:text-slate-600 placeholder:text-sm"
+                className="bg-[#1e1218] border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none placeholder:text-slate-600 placeholder:text-sm"
                 required
                 disabled={isSending}
               />
@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
                 value={formData.description}
                 onChange={handleChange}
                 placeholder="Describe your mission..."
-                className="bg-slate-900 border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none resize-none placeholder:text-slate-600 placeholder:text-sm"
+                className="bg-[#1e1218] border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none resize-none placeholder:text-slate-600 placeholder:text-sm"
                 required
                 disabled={isSending}
               />
@@ -192,7 +192,7 @@ const Contact: React.FC = () => {
                 <a
                   href="https://www.linkedin.com/in/eshita-bhawsar-552a82255/"
                   target="_blank"
-                  className="bg-slate-900 p-3 border-2 border-white hover:border-retro-cyan hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
+                  className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-cyan hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
                 >
                   <Linkedin className="text-white" />
                   <span className="font-pixel text-[10px] text-white hidden group-hover:inline">
@@ -203,7 +203,7 @@ const Contact: React.FC = () => {
                 <a
                   href="https://github.com/esh-dev257"
                   target="_blank"
-                  className="bg-slate-900 p-3 border-2 border-white hover:border-retro-green hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
+                  className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-green hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
                 >
                   <Github className="text-white" />
                   <span className="font-pixel text-[10px] text-white hidden group-hover:inline">
@@ -215,7 +215,7 @@ const Contact: React.FC = () => {
                   href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-slate-900 p-3 border-2 border-white hover:border-retro-pink hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
+                  className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-pink hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
                   title="Download Resume"
                 >
                   <FileText className="text-white" />

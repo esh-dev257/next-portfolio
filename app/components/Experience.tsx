@@ -56,7 +56,7 @@ const Experience: React.FC = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`relative bg-slate-800 border-4 ${exp.color} p-6 shadow-pixel hover:translate-x-2 transition-transform`}
+            className={`relative bg-[#1a2520] border-4 ${exp.color} p-6 shadow-pixel hover:translate-x-2 transition-transform`}
           >
             {/* Corner decorations */}
             <div

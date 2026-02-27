@@ -153,7 +153,7 @@ const MLCarousel: React.FC = () => {
         />
 
         <div
-          className={`bg-slate-900/90 border-4 ${project.borderColor} 
+          className={`bg-[#1a2328]/90 border-4 ${project.borderColor}
             transition-all duration-500 ${project.shadowClass} relative overflow-hidden`}
         >
           {/* Dot grid */}
@@ -448,7 +448,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* DSA */}
-        <div className="bg-slate-800 border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
+        <div className="bg-[#201a28] border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
           <h3 className="font-pixel text-lg text-retro-green mb-4">
             DSA Sorting Visualizer
           </h3>
@@ -470,7 +470,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* MERN */}
-        <div className="bg-slate-800 border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
+        <div className="bg-[#201a28] border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
           <h3 className="font-pixel text-lg text-retro-green mb-4">
             MERN E-commerce
           </h3>

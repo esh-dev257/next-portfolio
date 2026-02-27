@@ -51,13 +51,13 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="mt-6 sm:mt-10 flex flex-wrap justify-center gap-2 sm:gap-4">
-          <div className="bg-slate-800 border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-yellow">
+          <div className="bg-retro-bg border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-yellow">
             Level: 22
           </div>
-          <div className="bg-slate-800 border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-cyan">
+          <div className="bg-retro-bg border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-cyan">
             Class: Engineer
           </div>
-          <div className="bg-slate-800 border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-green">
+          <div className="bg-retro-bg border-2 border-slate-600 px-3 py-2 sm:px-4 font-pixel text-[10px] sm:text-xs text-retro-green">
             Status: Online
           </div>
         </div>

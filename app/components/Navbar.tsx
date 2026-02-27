@@ -51,8 +51,8 @@ const Navbar: React.FC = () => {
       <nav
         className={`fixed top-0 left-0 w-full z-50 px-4 py-3 transition-all duration-300 ${
           scrolled
-            ? "bg-slate-900/95 border-b-4 border-white backdrop-blur-md"
-            : "bg-slate-900/90 border-b-4 border-white backdrop-blur-sm"
+            ? "bg-retro-bg/95 border-b-4 border-white backdrop-blur-md"
+            : "bg-retro-bg/90 border-b-4 border-white backdrop-blur-sm"
         }`}
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -103,7 +103,7 @@ const Navbar: React.FC = () => {
           />
 
           {/* Menu panel */}
-          <div className="absolute top-[60px] left-0 w-full bg-slate-900 border-b-4 border-white animate-slideDown">
+          <div className="absolute top-[60px] left-0 w-full bg-retro-bg border-b-4 border-white animate-slideDown">
             <div className="flex flex-col items-center py-6 gap-1">
               {navLinks.map((link, index) => (
                 <a

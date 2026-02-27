@@ -332,7 +332,7 @@ export default function Skills() {
     >
       <SectionHeader title="Skills" icon={<Cpu size={24} />} />
 
-      <div className="max-w-5xl mx-auto bg-slate-800/50 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
+      <div className="max-w-5xl mx-auto bg-[#1a2328]/50 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
         <div className="bg-slate-900/80 px-2 sm:px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
           <div className="flex items-center gap-1 sm:gap-2">
             <Monitor size={12} className="text-cyan-400 sm:hidden" />

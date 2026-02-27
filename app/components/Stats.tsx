@@ -411,7 +411,7 @@ const Stats: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Github Activity Card */}
-        <div className="bg-slate-900 border-4 border-retro-green p-6 relative flex flex-col h-full">
+        <div className="bg-[#1a2520] border-4 border-retro-green p-6 relative flex flex-col h-full">
           <div className="absolute -top-3 left-4 bg-retro-bg px-2">
             <h3 className="flex items-center gap-2 font-pixel text-sm text-retro-green">
               <Github size={16} /> ACTIVITY
@@ -494,7 +494,7 @@ const Stats: React.FC = () => {
         </div>
 
         {/* LeetCode Stats Card */}
-        <div className="bg-slate-900 border-4 border-retro-yellow p-6 relative flex flex-col h-full">
+        <div className="bg-[#26241a] border-4 border-retro-yellow p-6 relative flex flex-col h-full">
           <div className="absolute -top-3 left-4 bg-retro-bg px-2">
             <h3 className="flex items-center gap-2 font-pixel text-sm text-retro-yellow">
               <Code2 size={16} /> LEETCODE
