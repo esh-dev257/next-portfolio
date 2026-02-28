@@ -50,13 +50,13 @@ const experiences: ExperienceType[] = [
 const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
-      <SectionHeader title="Experience " icon={<Briefcase size={32} />} />
+      <SectionHeader title="Experience" icon={<Briefcase size={32} />} />
 
       <div className="space-y-8">
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`relative bg-[#1a2520] border-4 ${exp.color} p-6 shadow-pixel hover:translate-x-2 transition-transform`}
+            className={`relative bg-[#1a2520]/80  border-4 ${exp.color} p-6 shadow-pixel hover:translate-x-2 transition-transform`}
           >
             {/* Corner decorations */}
             <div
@@ -72,9 +72,9 @@ const Experience: React.FC = () => {
               className={`absolute bottom-0 right-0 w-4 h-4 bg-white -mb-1 -mr-1`}
             ></div>
 
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 border-b-2 border-dashed border-gray-600 pb-4">
+            <div className="flex flex-col md:flex-row justify-between m-2 items-start md:items-center mb-4 border-b-2 border-dashed border-gray-600 pb-4">
               <div>
-                <h3 className="font-pixel text-sm md:text-lg text-white mb-2">
+                <h3 className="font-pixel text-sm md:text-lg text-white mb-2 mt-1">
                   {exp.role}
                 </h3>
                 <div className="flex items-center gap-2 text-retro-cyan font-retro text-xl">
@@ -100,7 +100,7 @@ const Experience: React.FC = () => {
               {exp.description.map((item: string, i: number) => (
                 <li
                   key={i}
-                  className="flex items-start font-retro text-xl text-gray-300"
+                  className="flex items-start font-retro text-2xl text-gray-300"
                 >
                   <span className="text-retro-green mr-2">{">"}</span>
                   {item}

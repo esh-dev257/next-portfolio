@@ -40,7 +40,7 @@ const Achievements: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {achievements.map((item, idx) => (
-          <div key={idx} className={`bg-[#1e1a26] border-4 ${item.color} p-4 flex flex-col items-center text-center shadow-pixel hover:-translate-y-2 transition-transform group relative overflow-hidden`}>
+          <div key={idx} className={`bg-[#1e1a26]/85 border-4 ${item.color} p-4 flex flex-col items-center text-center shadow-pixel hover:-translate-y-2 transition-transform group relative overflow-hidden`}>
             
             {/* Shine Effect */}
             <div className="absolute top-0 -inset-full h-full w-1/2 z-[5] block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />

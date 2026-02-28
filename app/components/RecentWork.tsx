@@ -111,7 +111,7 @@ const RecentWork: React.FC = () => {
   return (
     <section
       id="recent-work"
-      className="py-16 px-4 md:px-8 max-w-6xl mx-auto border-t-4 border-dashed border-gray-700"
+      className="py-16 px-4 md:px-8 max-w-6xl mx-auto "
     >
       <SectionHeader title="Live Deployments" icon={<Monitor size={32} />} />
 

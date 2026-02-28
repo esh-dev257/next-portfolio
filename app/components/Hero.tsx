@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center items-center relative border-b-4 border-white p-4 pt-24 md:pt-4"
+      className="min-h-screen flex flex-col justify-center items-center relative p-4 pt-24 md:pt-4"
     >
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none"></div>
 
