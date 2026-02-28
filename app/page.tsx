@@ -55,8 +55,8 @@ function App() {
           </ScrollReveal>
         </main>
 
-        <footer className="bg-black py-6 text-center border-t-4 border-white">
-             <p className="font-retro text-lg text-gray-500">&copy; Eshita Bhawsar. All rights reserved.</p>
+        <footer className="bg-[#000000]/65 py-6 text-center border-t-4 border-white">
+             <p className="font-retro text-xl text-white-500">&copy; Eshita Bhawsar. All rights reserved.</p>
         </footer>
 
         <ScrollToTop />

@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
         />
       )}
 
-      <div className="bg-[#261a22] border-4 border-white p-6 sm:p-10 shadow-pixel relative">
+      <div className="bg-[#261a22]/85 border-4 border-white p-6 sm:p-10 shadow-pixel relative">
         <div className="absolute top-2 right-2 flex gap-1">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>

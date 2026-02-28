@@ -386,8 +386,8 @@ const Projects: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* MVP */}
         <div className="md:col-span-2 relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-retro-pink to-retro-purple opacity-75 blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
-          <div className="relative bg-retro-bg border-4 border-white p-6 md:p-8">
+          <div className="absolute -inset-1 bg-gradient-to-r from-retro-pink to-retro-purple opacity-25 blur group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+          <div className="relative bg-retro-bg/70 border-4 border-white p-6 md:p-8">
             <div className="absolute top-0 right-0 p-2 bg-retro-yellow text-black font-pixel text-xs border-b-4 border-l-4 border-black">
               ★ MVP ★
             </div>
@@ -448,7 +448,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* DSA */}
-        <div className="bg-[#201a28] border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
+        <div className="bg-[#201a28]/85 border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
           <h3 className="font-pixel text-lg text-retro-green mb-4">
             DSA Sorting Visualizer
           </h3>
@@ -470,7 +470,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* MERN */}
-        <div className="bg-[#201a28] border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
+        <div className="bg-[#201a28]/85 border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
           <h3 className="font-pixel text-lg text-retro-green mb-4">
             MERN E-commerce
           </h3>
