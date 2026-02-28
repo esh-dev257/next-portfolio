@@ -1,34 +1,34 @@
 import React from 'react';
 import SectionHeader from './SectionHeader';
-import { Trophy, Zap, Users, Code, Award } from 'lucide-react';
+
 
 const Achievements: React.FC = () => {
   const achievements = [
     {
       title: "Speed Demon",
       desc: "Reduced page-load time by 40% for 10k+ users.",
-      icon: <Zap size={32} className="text-retro-yellow" />,
+      icon: <i className="hn hn-bolt text-retro-yellow" style={{ fontSize: '32px' }} ></i>,
       rarity: "Legendary",
       color: "border-retro-yellow"
     },
     {
       title: "Team Captain",
       desc: "Lead Developer at HACKX-2.0 International Hackathon.",
-      icon: <Users size={32} className="text-retro-green" />,
+      icon: <i className="hn hn-users text-retro-green" style={{ fontSize: '32px' }} ></i>,
       rarity: "Epic",
       color: "border-retro-green"
     },
     {
       title: "Migration Master",
       desc: "Successfully migrated 2 large systems to React stack.",
-      icon: <Code size={32} className="text-retro-cyan" />,
+      icon: <i className="hn hn-code text-retro-cyan" style={{ fontSize: '32px' }} ></i>,
       rarity: "Rare",
       color: "border-retro-cyan"
     },
     {
       title: "Algorithm Knight",
       desc: "Solved 300+ LeetCode problems (Easy/Med/Hard).",
-      icon: <Award size={32} className="text-retro-pink" />,
+      icon: <i className="hn hn-star text-retro-pink" style={{ fontSize: '32px' }} ></i>,
       rarity: "Rare",
       color: "border-retro-pink"
     }
@@ -36,7 +36,7 @@ const Achievements: React.FC = () => {
 
   return (
     <section id="achievements" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
-      <SectionHeader title="Trophies & Achievements" icon={<Trophy size={32} />} />
+      <SectionHeader title="Trophies & Achievements" icon={<i className="hn hn-trophy " style={{ fontSize: '32px' }} ></i>} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {achievements.map((item, idx) => (

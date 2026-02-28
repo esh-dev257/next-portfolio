@@ -1,7 +1,6 @@
 import React from "react";
 import { Experience as ExperienceType } from "../../types";
 import SectionHeader from "./SectionHeader";
-import { Briefcase, ExternalLink } from "lucide-react";
 
 const experiences: ExperienceType[] = [
   {
@@ -50,7 +49,10 @@ const experiences: ExperienceType[] = [
 const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
-      <SectionHeader title="Experience" icon={<Briefcase size={32} />} />
+      <SectionHeader
+        title="Experience"
+        icon={<i className="hn hn-business " style={{ fontSize: "32px" }}></i>}
+      />
 
       <div className="space-y-8">
         {experiences.map((exp, index) => (
@@ -86,7 +88,10 @@ const Experience: React.FC = () => {
                       rel="noopener noreferrer"
                       className="hover:text-white"
                     >
-                      <ExternalLink size={16} />
+                      <i
+                        className="hn hn-external-link "
+                        style={{ fontSize: "16px" }}
+                      ></i>
                     </a>
                   )}
                 </div>

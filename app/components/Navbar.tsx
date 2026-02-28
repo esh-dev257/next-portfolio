@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+
 
 const navLinks = [
   { href: "#experience", label: "Experience", hoverColor: "hover:text-retro-green" },
@@ -85,9 +85,9 @@ const Navbar: React.FC = () => {
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
-              <X size={20} className="text-retro-pink" />
+              <i className="hn hn-times text-retro-pink" style={{ fontSize: '20px' }} ></i>
             ) : (
-              <Menu size={20} className="text-retro-green" />
+              <i className="hn hn-bars text-retro-green" style={{ fontSize: '20px' }} ></i>
             )}
           </button>
         </div>

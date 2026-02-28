@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
 
 export const metadata = {
   title: "Eshita Bhawsar | Full Stack Developer",

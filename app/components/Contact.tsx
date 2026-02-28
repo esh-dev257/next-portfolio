@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import SectionHeader from "./SectionHeader";
 import RetroButton from "./RetroButton";
 import RetroToast from "./RetroToast";
-import { Mail, Linkedin, Github, FileText, Loader2 } from "lucide-react";
+
 import emailjs from "@emailjs/browser";
 
 const Contact: React.FC = () => {
@@ -75,7 +75,10 @@ const Contact: React.FC = () => {
       id="contact"
       className="py-16 px-4 md:px-8 max-w-4xl mx-auto mb-20 relative"
     >
-      <SectionHeader title="Game Over? Continue?" icon={<Mail size={32} />} />
+      <SectionHeader
+        title="Game Over? Continue?"
+        icon={<i className="hn hn-envelope " style={{ fontSize: "32px" }}></i>}
+      />
 
       {showToast && (
         <RetroToast
@@ -136,7 +139,7 @@ const Contact: React.FC = () => {
                 value={formData.description}
                 onChange={handleChange}
                 placeholder="Describe your mission..."
-                className="bg-[#1e1218] border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-none resize-none placeholder:text-slate-600 placeholder:text-sm"
+                className="bg-[#1e1218] border-2 border-slate-600 p-2 font-retro text-xl text-white focus:border-retro-pink outline-resize-nonone ne placeholder:text-slate-600 placeholder:text-sm"
                 required
                 disabled={isSending}
               />
@@ -151,12 +154,18 @@ const Contact: React.FC = () => {
             >
               {isSending ? (
                 <>
-                  <Loader2 size={16} className="animate-spin" />
+                  <i
+                    className="hn hn-spinner animate-spin"
+                    style={{ fontSize: "20px" }}
+                  ></i>
                   <span>Sending...</span>
                 </>
               ) : (
                 <>
-                  <Mail size={16} />
+                  <i
+                    className="hn hn-envelope "
+                    style={{ fontSize: "20px" }}
+                  ></i>
                   <span>Send Message</span>
                 </>
               )}
@@ -173,10 +182,13 @@ const Contact: React.FC = () => {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-3 text-white hover:text-retro-cyan transition-colors">
-                  <Mail size={24} />
+                  <i
+                    className="hn hn-envelope "
+                    style={{ fontSize: "24px" }}
+                  ></i>
                   <a
                     href="mailto:eshitabhawsar@gmail.com"
-                    className="font-retro text-xl"
+                    className="font-retro text-2xl"
                   >
                     eshitabhawsar@gmail.com
                   </a>
@@ -194,7 +206,10 @@ const Contact: React.FC = () => {
                   target="_blank"
                   className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-cyan hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
                 >
-                  <Linkedin className="text-white" />
+                  <i
+                    className="hn hn-linkedin text-white"
+                    style={{ fontSize: "24px" }}
+                  ></i>
                   <span className="font-pixel text-[10px] text-white hidden group-hover:inline">
                     Linkedin
                   </span>
@@ -203,9 +218,14 @@ const Contact: React.FC = () => {
                 <a
                   href="https://github.com/esh-dev257"
                   target="_blank"
-                  className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-green hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
+                  className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-green 
+                  hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 
+                  active:shadow-none flex items-center gap-2 group"
                 >
-                  <Github className="text-white" />
+                  <i
+                    className="hn hn-github text-white"
+                    style={{ fontSize: "24px" }}
+                  ></i>
                   <span className="font-pixel text-[10px] text-white hidden group-hover:inline">
                     Github
                   </span>
@@ -218,7 +238,7 @@ const Contact: React.FC = () => {
                   className="bg-[#1e1218] p-3 border-2 border-white hover:border-retro-pink hover:bg-slate-800 transition-all shadow-pixel active:translate-y-1 active:shadow-none flex items-center gap-2 group"
                   title="Download Resume"
                 >
-                  <FileText className="text-white" />
+                  <i className="hn hn-writing" style={{ fontSize: "24px" }}></i>
                   <span className="font-pixel text-[10px] text-white hidden group-hover:inline">
                     RESUME
                   </span>

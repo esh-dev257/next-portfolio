@@ -3,10 +3,10 @@ import React, { useState } from "react";
 const messages = [
   "Hi, I'm Eshita!",
   "I build cool web apps!",
-  "Full Stack Wizard 🧙‍♀️",
-  "Check out my stats 📊",
-  "Pixel art is awesome 👾",
-  "Let's code something! 💻",
+  "Full Stack Developer",
+  "Check out my stats",
+  "Pixel art is awesome XD",
+  "Let's code something!!",
 ];
 const PixelAvatar: React.FC = () => {
   const [msgIndex, setMsgIndex] = useState(0);

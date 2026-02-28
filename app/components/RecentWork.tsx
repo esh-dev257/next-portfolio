@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
-import { Monitor, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+
 import RetroButton from "./RetroButton";
 
 import Educerns from "../../public/educerns.png";
@@ -113,7 +113,7 @@ const RecentWork: React.FC = () => {
       id="recent-work"
       className="py-16 px-4 md:px-8 max-w-6xl mx-auto "
     >
-      <SectionHeader title="Live Deployments" icon={<Monitor size={32} />} />
+      <SectionHeader title="Live Deployments" icon={<i className="hn hn-tv " style={{ fontSize: '32px' }} ></i>} />
 
       <div className="relative flex items-center justify-center gap-4 md:gap-8">
         {/* Prev Button (Desktop) */}
@@ -121,7 +121,7 @@ const RecentWork: React.FC = () => {
           onClick={prevSlide}
           className="hidden md:flex bg-slate-800 p-2 border-2 border-white hover:bg-slate-700 active:scale-95 transition-all text-white"
         >
-          <ChevronLeft size={32} />
+          <i className="hn hn-chevron-left " style={{ fontSize: '32px' }} ></i>
         </button>
 
         {/* Carousel Container */}
@@ -181,7 +181,7 @@ const RecentWork: React.FC = () => {
                   >
                     <RetroButton variant="primary" className="text-[10px] py-2">
                       <span className="flex items-center gap-1">
-                        VISIT <ExternalLink size={12} />
+                        VISIT <i className="hn hn-external-link " style={{ fontSize: '12px' }} ></i>
                       </span>
                     </RetroButton>
                   </a>
@@ -203,7 +203,7 @@ const RecentWork: React.FC = () => {
               onClick={prevSlide}
               className="bg-slate-800 p-2 border border-white text-white"
             >
-              <ChevronLeft />
+              <i className="hn hn-chevron-left " style={{ fontSize: '24px' }} ></i>
             </button>
             <span className="font-pixel text-xs text-white">
               {currentIndex + 1} / {works.length}
@@ -212,7 +212,7 @@ const RecentWork: React.FC = () => {
               onClick={nextSlide}
               className="bg-slate-800 p-2 border border-white text-white"
             >
-              <ChevronRight />
+              <i className="hn hn-chevron-right " style={{ fontSize: '24px' }} ></i>
             </button>
           </div>
 
@@ -239,7 +239,7 @@ const RecentWork: React.FC = () => {
           onClick={nextSlide}
           className="hidden md:flex bg-slate-800 p-2 border-2 border-white hover:bg-slate-700 active:scale-95 transition-all text-white"
         >
-          <ChevronRight size={32} />
+          <i className="hn hn-chevron-right " style={{ fontSize: '32px' }} ></i>
         </button>
       </div>
     </section>

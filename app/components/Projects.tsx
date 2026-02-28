@@ -6,19 +6,7 @@ import titanic from "../../public/titanic.png";
 import brain from "../../public/brain-tumor.png";
 import trick from "../../public/trick-ai.png";
 import handwriting from "../../public/handwriting.png";
-import {
-  Rocket,
-  ExternalLink,
-  Github,
-  ChevronLeft,
-  ChevronRight,
-  Brain,
-  Terminal,
-  Ship,
-  Scan,
-  Fingerprint,
-  PenTool,
-} from "lucide-react";
+
 import RetroButton from "./RetroButton";
 import Image from "next/image";
 
@@ -26,7 +14,26 @@ import Image from "next/image";
 const mlProjects = [
   {
     title: "Titanic Survival Prediction",
-    icon: <Ship size={28} />,
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect x="10" y="2" width="4" height="2" fill="currentColor" />
+        <rect x="10" y="8" width="4" height="2" fill="currentColor" />
+        <rect x="8" y="4" width="2" height="4" fill="currentColor" />
+        <rect x="14" y="4" width="2" height="4" fill="currentColor" />
+        <rect x="11" y="9" width="2" height="12" fill="currentColor" />
+        <rect x="5" y="20" width="14" height="2" fill="currentColor" />
+        <rect x="3" y="12" width="2" height="8" fill="currentColor" />
+        <rect x="19" y="12" width="2" height="8" fill="currentColor" />
+        <rect x="5" y="12" width="2" height="2" fill="currentColor" />
+        <rect x="17" y="12" width="2" height="2" fill="currentColor" />
+      </svg>
+    ),
     borderColor: "border-retro-purple",
     textColor: "text-retro-purple",
     bgColor: "bg-retro-purple",
@@ -41,7 +48,7 @@ const mlProjects = [
   },
   {
     title: "Brain Tumor Detection",
-    icon: <Scan size={28} />,
+    icon: <i className="hn hn-search " style={{ fontSize: "28px" }}></i>,
     borderColor: "border-retro-green",
     textColor: "text-retro-green",
     bgColor: "bg-retro-green",
@@ -56,7 +63,7 @@ const mlProjects = [
   },
   {
     title: "Modify Images & Trick AI",
-    icon: <Fingerprint size={28} />,
+    icon: <i className="hn hn-lock " style={{ fontSize: "28px" }}></i>,
     borderColor: "border-retro-pink",
     textColor: "text-retro-pink",
     bgColor: "bg-retro-pink",
@@ -71,7 +78,7 @@ const mlProjects = [
   },
   {
     title: "Handwriting Recognition",
-    icon: <PenTool size={28} />,
+    icon: <i className="hn hn-pen " style={{ fontSize: "28px" }}></i>,
     borderColor: "border-retro-cyan",
     textColor: "text-retro-cyan",
     bgColor: "bg-retro-cyan",
@@ -168,15 +175,6 @@ const MLCarousel: React.FC = () => {
           {/* Top bar */}
           <div className="flex items-center justify-between px-6 md:px-10 pt-6 relative">
             <div className="flex items-center gap-2">
-              <Terminal size={14} className="text-gray-600" />
-              <span className="font-pixel text-[10px] text-gray-600">
-                ~/ai-ml/project-{String(current + 1).padStart(2, "0")}
-              </span>
-              <span className="font-pixel text-[10px] text-gray-600 animate-pulse">
-                █
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
               <span className={`font-pixel text-sm ${project.textColor}`}>
                 {String(current + 1).padStart(2, "0")}
               </span>
@@ -268,17 +266,6 @@ const MLCarousel: React.FC = () => {
                 </div>
 
                 {/* Divider */}
-                <div className="flex items-center gap-2 mb-5">
-                  <div
-                    className={`flex-1 h-px ${project.bgColor} opacity-30`}
-                  />
-                  <div
-                    className={`w-1.5 h-1.5 ${project.bgColor} opacity-50`}
-                  />
-                  <div
-                    className={`flex-1 h-px ${project.bgColor} opacity-30`}
-                  />
-                </div>
 
                 {/* Description */}
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6 font-retro">
@@ -294,7 +281,11 @@ const MLCarousel: React.FC = () => {
                 >
                   <RetroButton variant="primary">
                     <span className="flex items-center gap-2">
-                      View Project <ExternalLink size={14} />
+                      View Project{" "}
+                      <i
+                        className="hn hn-external-link "
+                        style={{ fontSize: "14px" }}
+                      ></i>
                     </span>
                   </RetroButton>
                 </a>
@@ -308,20 +299,20 @@ const MLCarousel: React.FC = () => {
             className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
               bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn`}
           >
-            <ChevronLeft
-              size={20}
-              className={`${project.textColor} group-hover/btn:scale-110 transition-transform`}
-            />
+            <i
+              className="hn hn-chevron-left ${project.textColor} group-hover/btn:scale-110 transition-transform"
+              style={{ fontSize: "20px" }}
+            ></i>
           </button>
           <button
             onClick={next}
             className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
               bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn`}
           >
-            <ChevronRight
-              size={20}
-              className={`${project.textColor} group-hover/btn:scale-110 transition-transform`}
-            />
+            <i
+              className="hn hn-chevron-right ${project.textColor} group-hover/btn:scale-110 transition-transform"
+              style={{ fontSize: "20px" }}
+            ></i>
           </button>
         </div>
       </div>
@@ -377,11 +368,16 @@ const MLCarousel: React.FC = () => {
 // ─── Main Component ───
 const Projects: React.FC = () => {
   return (
-    <section
-      id="projects"
-      className="py-16 px-4 md:px-8 max-w-6xl mx-auto border-t-4 border-dashed border-gray-700"
-    >
-      <SectionHeader title="Inventory / Projects" icon={<Rocket size={32} />} />
+    <section id="projects" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
+      <SectionHeader
+        title="Inventory / Projects"
+        icon={
+          <i
+            className="hn hn-plane-departure "
+            style={{ fontSize: "32px" }}
+          ></i>
+        }
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* MVP */}
@@ -428,7 +424,11 @@ const Projects: React.FC = () => {
               >
                 <RetroButton variant="secondary">
                   <span className="flex items-center gap-2">
-                    View Demo <ExternalLink size={14} />
+                    View Demo{" "}
+                    <i
+                      className="hn hn-external-link "
+                      style={{ fontSize: "14px" }}
+                    ></i>
                   </span>
                 </RetroButton>
               </a>
@@ -439,7 +439,11 @@ const Projects: React.FC = () => {
               >
                 <RetroButton variant="primary">
                   <span className="flex items-center gap-2">
-                    Source Code <Github size={14} />
+                    Source Code{" "}
+                    <i
+                      className="hn hn-github "
+                      style={{ fontSize: "14px" }}
+                    ></i>
                   </span>
                 </RetroButton>
               </a>
@@ -463,7 +467,8 @@ const Projects: React.FC = () => {
           >
             <RetroButton variant="primary">
               <span className="flex items-center gap-2">
-                Repo <Github size={14} />
+                Repo{" "}
+                <i className="hn hn-github " style={{ fontSize: "14px" }}></i>
               </span>
             </RetroButton>
           </a>
@@ -485,7 +490,8 @@ const Projects: React.FC = () => {
           >
             <RetroButton variant="primary">
               <span className="flex items-center gap-2">
-                Repo <Github size={14} />
+                Repo{" "}
+                <i className="hn hn-github " style={{ fontSize: "14px" }}></i>
               </span>
             </RetroButton>
           </a>
@@ -495,7 +501,15 @@ const Projects: React.FC = () => {
       {/* ═══════════ AI / ML CAROUSEL ═══════════ */}
 
       <div className="mt-20">
-        <SectionHeader title="AI / ML Projects" icon={<Brain size={28} />} />
+        <SectionHeader
+          title="AI / ML Projects"
+          icon={
+            <i
+              className="hn hn-face-thinking "
+              style={{ fontSize: "28px" }}
+            ></i>
+          }
+        />
       </div>
 
       <div className="mt-10">
