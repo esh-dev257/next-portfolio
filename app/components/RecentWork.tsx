@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 import RetroButton from "./RetroButton";
+import AiBuilders from "../../public/ai-builders-cup.png";
 import CRTTransition from "./CRTTransition";
 
 import Educerns from "../../public/educerns.png";
@@ -41,6 +42,16 @@ const RecentWork: React.FC = () => {
       desc: "Architected and built the platform from scratch using modular React components and clean UI design for industry professionals.",
       img: FirstPrincipleLabs,
     },
+    {
+      title: "AI Builders Cup",
+      url: "https://ai-builders-cup-v2.vercel.app/",
+      status: "Live",
+      tech: ["React", "Tailwind"],
+      color: "border-retro-purple",
+      desc: "Built an interactive competition platform for school students to showcase AI projects, featuring event details, registration flows, and a polished responsive UI.",
+      img: AiBuilders,
+    },
+
     {
       title: "Research Vizuara",
       url: "https://research.vizuara.ai/",

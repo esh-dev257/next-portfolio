@@ -374,6 +374,69 @@ const Projects: React.FC = () => {
             </div>
 
             <h3 className="font-pixel text-xl md:text-2xl text-retro-pink mb-4">
+              Dooduel
+            </h3>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {["React", "Node.js", "Socket.IO", "Canvas API"].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2 py-1 bg-slate-700 text-retro-cyan font-retro text-lg border border-slate-500"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p className="font-retro text-xl text-gray-300 mb-6 leading-relaxed">
+              Real-time multiplayer party game for up to 20 players with
+              live drawing sync via WebSockets. Features anonymous voting,
+              dynamic scoring, a full drawing canvas with brush tools and
+              flood fill, and reconnection handling with rate limiting.
+            </p>
+
+            <div className="flex gap-4">
+              <a
+                href="https://scribblpro.onrender.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RetroButton variant="secondary">
+                  <span className="flex items-center gap-2">
+                    View Demo{" "}
+                    <i
+                      className="hn hn-external-link "
+                      style={{ fontSize: "14px" }}
+                    ></i>
+                  </span>
+                </RetroButton>
+              </a>
+              <a
+                href="https://github.com/esh-dev257/Dooduel"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RetroButton variant="primary">
+                  <span className="flex items-center gap-2">
+                    Source Code{" "}
+                    <i
+                      className="hn hn-github "
+                      style={{ fontSize: "14px" }}
+                    ></i>
+                  </span>
+                </RetroButton>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="md:col-span-2 relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-retro-pink to-retro-purple opacity-25 blur group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+          <div className="relative bg-retro-bg/70 border-4 border-white p-6 md:p-8">
+            <div className="absolute top-0 right-0 p-2 bg-retro-yellow text-black font-pixel text-xs border-b-4 border-l-4 border-black">
+              ★ MVP ★
+            </div>
+
+            <h3 className="font-pixel text-xl md:text-2xl text-retro-pink mb-4">
               Ed-Tech Platform
             </h3>
 

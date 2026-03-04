@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import "./CRTTransition.css";
 
@@ -7,56 +7,69 @@ interface CRTTransitionProps {
   alt: string;
 }
 
-/**
- * CRTTransition Component
- * Simulates a CRT monitor channel change effect when the source image changes.
- */
 const CRTTransition: React.FC<CRTTransitionProps> = ({ src, alt }) => {
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const [displaySrc, setDisplaySrc] = useState(src);
+  const [nextSrc, setNextSrc] = useState<string | StaticImageData | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (src === currentSrc) return;
+    if (src === displaySrc && !nextSrc) return;
+    if (src === nextSrc) return;
 
+    // Start transition
+    setNextSrc(src);
     setIsTransitioning(true);
 
-    // Delay the actual source swap slightly for the "glitch" to build up
-    const swapTimer = setTimeout(() => {
-      setCurrentSrc(src);
-    }, 150);
+    // Clear any pending timeout
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    const endTimer = setTimeout(() => {
+    // After transition, swap the images
+    timeoutRef.current = setTimeout(() => {
+      setDisplaySrc(src);
+      setNextSrc(null);
       setIsTransitioning(false);
-    }, 500);
+    }, 600);
 
     return () => {
-      clearTimeout(swapTimer);
-      clearTimeout(endTimer);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [src]);
 
   return (
     <div className={`crt-frame ${isTransitioning ? "channel-changing" : ""}`}>
-      {/* Main Image Layer */}
-      <div className="crt-content">
+      {/* Current Image Layer */}
+      <div className="crt-content crt-img-layer">
         <Image
-          src={currentSrc}
+          src={displaySrc}
           alt={alt}
           fill
-          className="object-cover transition-all duration-300"
+          className="object-cover"
           sizes="(max-width: 768px) 100vw, 800px"
           priority
         />
       </div>
 
-      {/* Dynamic CRT Transition Layers */}
-      {isTransitioning && (
-        <div className="crt-transition-overlays">
-          <div className="crt-static-noise"></div>
-          <div className="crt-scanline-pulse"></div>
-          <div className="crt-rgb-glitch"></div>
+      {/* Incoming Image Layer (crossfade) */}
+      {nextSrc && (
+        <div className="crt-content crt-img-incoming">
+          <Image
+            src={nextSrc}
+            alt={alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 800px"
+            priority
+          />
         </div>
       )}
+
+      {/* CRT Transition Overlays (always mounted, opacity controlled via CSS) */}
+      <div className="crt-transition-overlays">
+        <div className="crt-static-noise"></div>
+        <div className="crt-scanline-pulse"></div>
+        <div className="crt-rgb-glitch"></div>
+      </div>
 
       {/* Persistent CRT Aesthetic Layers */}
       <div className="crt-base-effects">
