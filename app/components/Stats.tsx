@@ -1,15 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
-import {
-  BarChart3,
-  Github,
-  Code2,
-  ExternalLink,
-  Loader2,
-  Calendar,
-  TrendingUp,
-} from "lucide-react";
+
 import RetroButton from "./RetroButton";
 import dynamic from "next/dynamic";
 
@@ -240,12 +232,6 @@ const RetroPieChart: React.FC<PieChartProps> = ({
           </div>
         </div>
       )}
-
-      {/* Decorative corner pixels */}
-      <div className="absolute top-0 left-0 w-2 h-2 bg-retro-green opacity-50" />
-      <div className="absolute top-0 right-0 w-2 h-2 bg-retro-green opacity-50" />
-      <div className="absolute bottom-0 left-0 w-2 h-2 bg-retro-green opacity-50" />
-      <div className="absolute bottom-0 right-0 w-2 h-2 bg-retro-green opacity-50" />
     </div>
   );
 };
@@ -407,21 +393,27 @@ const Stats: React.FC = () => {
         }
       `}</style>
 
-      <SectionHeader title="Player Stats" icon={<BarChart3 size={32} />} />
+      <SectionHeader
+        title="Player Stats"
+        icon={
+          <i className="hn hn-chart-line " style={{ fontSize: "32px" }}></i>
+        }
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Github Activity Card */}
         <div className="bg-[#1a2520] border-4 border-retro-green p-6 relative flex flex-col h-full">
-          <div className="absolute -top-3 left-4 bg-retro-bg px-2">
+          <div className="absolute -top-3 left-4 bg-[#1a2520] py-1 px-2">
             <h3 className="flex items-center gap-2 font-pixel text-sm text-retro-green">
-              <Github size={16} /> ACTIVITY
+              <i className="hn hn-github " style={{ fontSize: "16px" }}></i>{" "}
+              ACTIVITY
             </h3>
           </div>
 
           <div className="mt-4 grow flex flex-col justify-center">
             {/* Calendar Container */}
             <div className="bg-slate-800 border-2 border-dashed border-slate-700 p-6 rounded-sm w-full h-full flex flex-col justify-center">
-              <div className="mb-4">
+              <div className="mb-10">
                 <p className="font-pixel text-xs text-gray-400">
                   LAST 4 MONTHS
                 </p>
@@ -487,7 +479,11 @@ const Stats: React.FC = () => {
                 variant="primary"
                 className="w-full flex items-center justify-center gap-2"
               >
-                Visit Github Profile <ExternalLink size={16} />
+                Visit Github Profile{" "}
+                <i
+                  className="hn hn-external-link "
+                  style={{ fontSize: "16px" }}
+                ></i>
               </RetroButton>
             </a>
           </div>
@@ -495,15 +491,19 @@ const Stats: React.FC = () => {
 
         {/* LeetCode Stats Card */}
         <div className="bg-[#26241a] border-4 border-retro-yellow p-6 relative flex flex-col h-full">
-          <div className="absolute -top-3 left-4 bg-retro-bg px-2">
+          <div className="absolute -top-3 left-4 bg-[#26241a] px-2 py-1">
             <h3 className="flex items-center gap-2 font-pixel text-sm text-retro-yellow">
-              <Code2 size={16} /> LEETCODE
+              <i className="hn hn-code " style={{ fontSize: "16px" }}></i>{" "}
+              LEETCODE
             </h3>
           </div>
 
           {loading ? (
             <div className="mt-4 flex flex-col items-center justify-center h-64">
-              <Loader2 className="animate-spin text-retro-yellow" size={48} />
+              <i
+                className="hn hn-spinner animate-spin text-retro-yellow"
+                style={{ fontSize: "48px" }}
+              ></i>
               <p className="font-retro text-lg text-gray-400 mt-4">
                 Loading stats...
               </p>
@@ -577,7 +577,11 @@ const Stats: React.FC = () => {
                 variant="secondary"
                 className="w-full flex items-center justify-center gap-2"
               >
-                View LeetCode Profile <ExternalLink size={16} />
+                View LeetCode Profile{" "}
+                <i
+                  className="hn hn-external-link "
+                  style={{ fontSize: "16px" }}
+                ></i>
               </RetroButton>
             </a>
           </div>

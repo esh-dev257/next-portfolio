@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Terminal } from "lucide-react";
+
 import PixelAvatar from "./PixelAvatar";
 
 const Hero: React.FC = () => {
@@ -23,29 +23,38 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center items-center relative border-b-4 border-white p-4 pt-24 md:pt-4"
+      className="min-h-screen flex flex-col justify-center items-center relative p-4 pt-4 md:pt-4" // EXPERIMENT: Adjust 'pt-16' to change the distance from the navbar on phone view (e.g., pt-12 for less gap, pt-20 for more)
     >
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none"></div>
-
-      <div className="bg-retro-bg border-4 border-white p-6 sm:p-10 max-w-5xl w-full shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] relative z-10 text-center flex flex-col items-center">
-        {/* Avatar Section */}
-        <div className="mb-6">
-          <PixelAvatar />
-        </div>
-
+      {/* Avatar Section */}
+      <div className="mb-2">
+        <PixelAvatar />
+      </div>
+      <div className="bg-retro-bg/80 border-4 border-white p-6 sm:p-10 max-w-5xl w-full shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] relative z-10 text-center flex flex-col items-center">
         <h1 className="font-pixel text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white leading-tight sm:leading-relaxed">
-          PLAYER:<span className="text-retro-pink block sm:inline mt-2 sm:mt-0">ESHITA BHAWSAR</span>
+          PLAYER:
+          <span className="text-retro-pink block sm:inline mt-2 sm:mt-0">
+            ESHITA BHAWSAR
+          </span>
         </h1>
 
         <div className="flex items-center justify-center gap-2 sm:gap-3 font-retro text-lg sm:text-3xl md:text-4xl text-retro-green mb-6 sm:mb-8 min-h-[2.5rem] sm:min-h-[2.5rem]">
-          <Terminal size={20} className="sm:hidden" />
-          <Terminal size={28} className="hidden sm:block md:hidden" />
-          <Terminal size={32} className="hidden md:block" />
+          <i
+            className="hn hn-programming sm:hidden"
+            style={{ fontSize: "20px" }}
+          ></i>
+          <i
+            className="hn hn-programming hidden sm:block md:hidden"
+            style={{ fontSize: "28px" }}
+          ></i>
+          <i
+            className="hn hn-programming hidden md:block"
+            style={{ fontSize: "32px" }}
+          ></i>
           <span className="truncate">{text}</span>
           <span className="animate-ping">_</span>
         </div>
 
-        <p className="font-retro text-base sm:text-xl md:text-2xl text-retro-comment max-w-2xl mx-auto leading-relaxed px-2">
+        <p className="font-retro text-base sm:text-xl md:text-2xl text-[#FFF] max-w-2xl mx-auto leading-relaxed px-2">
           Constructing scalable digital worlds. Specializing in component-driven
           architecture and high-performance React applications.
         </p>

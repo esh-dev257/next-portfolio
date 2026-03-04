@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
 
 export const metadata = {
   title: "Eshita Bhawsar | Full Stack Developer",
@@ -11,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-retro-bg text-retro-comment font-retro min-h-screen">
         {children}
       </body>

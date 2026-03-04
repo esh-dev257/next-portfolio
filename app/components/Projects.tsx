@@ -6,19 +6,7 @@ import titanic from "../../public/titanic.png";
 import brain from "../../public/brain-tumor.png";
 import trick from "../../public/trick-ai.png";
 import handwriting from "../../public/handwriting.png";
-import {
-  Rocket,
-  ExternalLink,
-  Github,
-  ChevronLeft,
-  ChevronRight,
-  Brain,
-  Terminal,
-  Ship,
-  Scan,
-  Fingerprint,
-  PenTool,
-} from "lucide-react";
+
 import RetroButton from "./RetroButton";
 import Image from "next/image";
 
@@ -26,12 +14,31 @@ import Image from "next/image";
 const mlProjects = [
   {
     title: "Titanic Survival Prediction",
-    icon: <Ship size={28} />,
-    borderColor: "border-retro-purple",
-    textColor: "text-retro-purple",
-    bgColor: "bg-retro-purple",
-    bgTint: "bg-retro-purple/10",
-    glowColor: "rgba(168,85,247,0.4)",
+    icon: (
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect x="10" y="2" width="4" height="2" fill="currentColor" />
+        <rect x="10" y="8" width="4" height="2" fill="currentColor" />
+        <rect x="8" y="4" width="2" height="4" fill="currentColor" />
+        <rect x="14" y="4" width="2" height="4" fill="currentColor" />
+        <rect x="11" y="9" width="2" height="12" fill="currentColor" />
+        <rect x="5" y="20" width="14" height="2" fill="currentColor" />
+        <rect x="3" y="12" width="2" height="8" fill="currentColor" />
+        <rect x="19" y="12" width="2" height="8" fill="currentColor" />
+        <rect x="5" y="12" width="2" height="2" fill="currentColor" />
+        <rect x="17" y="12" width="2" height="2" fill="currentColor" />
+      </svg>
+    ),
+    borderColor: "border-retro-cyan",
+    textColor: "text-retro-cyan",
+    bgColor: "bg-retro-cyan",
+    bgTint: "bg-retro-cyan/10",
+    glowColor: "rgba(34,211,238,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(168,85,247,0.3)]",
     description:
       "Machine learning model that predicts passenger survival on the Titanic based on various features. Built using React, Tailwind CSS for the frontend, and Python ML libraries (Scikit-learn, Pandas) for data processing and model training.",
@@ -41,11 +48,11 @@ const mlProjects = [
   },
   {
     title: "Brain Tumor Detection",
-    icon: <Scan size={28} />,
-    borderColor: "border-retro-green",
-    textColor: "text-retro-green",
-    bgColor: "bg-retro-green",
-    bgTint: "bg-retro-green/10",
+    icon: <i className="hn hn-search " style={{ fontSize: "28px" }}></i>,
+    borderColor: "border-retro-pink",
+    textColor: "text-retro-pink",
+    bgColor: "bg-retro-pink",
+    bgTint: "bg-retro-pink/10",
     glowColor: "rgba(34,197,94,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(34,197,94,0.3)]",
     description:
@@ -56,7 +63,7 @@ const mlProjects = [
   },
   {
     title: "Modify Images & Trick AI",
-    icon: <Fingerprint size={28} />,
+    icon: <i className="hn hn-lock " style={{ fontSize: "28px" }}></i>,
     borderColor: "border-retro-pink",
     textColor: "text-retro-pink",
     bgColor: "bg-retro-pink",
@@ -71,7 +78,7 @@ const mlProjects = [
   },
   {
     title: "Handwriting Recognition",
-    icon: <PenTool size={28} />,
+    icon: <i className="hn hn-pen " style={{ fontSize: "28px" }}></i>,
     borderColor: "border-retro-cyan",
     textColor: "text-retro-cyan",
     bgColor: "bg-retro-cyan",
@@ -92,6 +99,10 @@ const MLCarousel: React.FC = () => {
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
 
   const project = mlProjects[current];
 
@@ -136,22 +147,22 @@ const MLCarousel: React.FC = () => {
       className="relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={(e) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+      }}
+      onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+      onTouchEnd={() => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) next();
+        if (isRightSwipe) prev();
+      }}
     >
       {/* Corner brackets */}
       <div className="relative">
-        <div
-          className={`absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 ${project.borderColor} transition-colors duration-500`}
-        />
-        <div
-          className={`absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 ${project.borderColor} transition-colors duration-500`}
-        />
-        <div
-          className={`absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 ${project.borderColor} transition-colors duration-500`}
-        />
-        <div
-          className={`absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 ${project.borderColor} transition-colors duration-500`}
-        />
-
         <div
           className={`bg-[#1a2328]/90 border-4 ${project.borderColor}
             transition-all duration-500 ${project.shadowClass} relative overflow-hidden`}
@@ -167,15 +178,6 @@ const MLCarousel: React.FC = () => {
 
           {/* Top bar */}
           <div className="flex items-center justify-between px-6 md:px-10 pt-6 relative">
-            <div className="flex items-center gap-2">
-              <Terminal size={14} className="text-gray-600" />
-              <span className="font-pixel text-[10px] text-gray-600">
-                ~/ai-ml/project-{String(current + 1).padStart(2, "0")}
-              </span>
-              <span className="font-pixel text-[10px] text-gray-600 animate-pulse">
-                █
-              </span>
-            </div>
             <div className="flex items-center gap-2">
               <span className={`font-pixel text-sm ${project.textColor}`}>
                 {String(current + 1).padStart(2, "0")}
@@ -221,18 +223,6 @@ const MLCarousel: React.FC = () => {
                   />
 
                   {/* Image corner accents */}
-                  <div
-                    className={`absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 ${project.borderColor} z-10`}
-                  />
-                  <div
-                    className={`absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 ${project.borderColor} z-10`}
-                  />
-                  <div
-                    className={`absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 ${project.borderColor} z-10`}
-                  />
-                  <div
-                    className={`absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 ${project.borderColor} z-10`}
-                  />
 
                   {/* Image overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-[5]" />
@@ -268,17 +258,6 @@ const MLCarousel: React.FC = () => {
                 </div>
 
                 {/* Divider */}
-                <div className="flex items-center gap-2 mb-5">
-                  <div
-                    className={`flex-1 h-px ${project.bgColor} opacity-30`}
-                  />
-                  <div
-                    className={`w-1.5 h-1.5 ${project.bgColor} opacity-50`}
-                  />
-                  <div
-                    className={`flex-1 h-px ${project.bgColor} opacity-30`}
-                  />
-                </div>
 
                 {/* Description */}
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6 font-retro">
@@ -292,38 +271,44 @@ const MLCarousel: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-block self-start"
                 >
-                  <RetroButton variant="primary">
+                  <RetroButton variant="cyan_bg">
                     <span className="flex items-center gap-2">
-                      View Project <ExternalLink size={14} />
+                      View Project{" "}
+                      <i
+                        className="hn hn-external-link "
+                        style={{ fontSize: "14px" }}
+                      ></i>
                     </span>
                   </RetroButton>
                 </a>
               </div>
             </div>
           </div>
-
-          {/* Nav Arrows */}
-          <button
-            onClick={prev}
-            className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
-              bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn`}
-          >
-            <ChevronLeft
-              size={20}
-              className={`${project.textColor} group-hover/btn:scale-110 transition-transform`}
-            />
-          </button>
-          <button
-            onClick={next}
-            className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
-              bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn`}
-          >
-            <ChevronRight
-              size={20}
-              className={`${project.textColor} group-hover/btn:scale-110 transition-transform`}
-            />
-          </button>
         </div>
+
+        {/* Nav Arrows */}
+        <button
+          onClick={prev}
+          className={`absolute -left-4 md:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
+            bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn hidden md:flex`}
+          aria-label="Previous project"
+        >
+          <i
+            className={`hn hn-arrow-left ${project.textColor} group-hover/btn:scale-110 transition-transform`}
+            style={{ fontSize: "20px" }}
+          ></i>
+        </button>
+        <button
+          onClick={next}
+          className={`absolute -right-4 md:-right-12 lg:-right-16 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
+            bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn hidden md:flex`}
+          aria-label="Next project"
+        >
+          <i
+            className={`hn hn-arrow-right ${project.textColor} group-hover/btn:scale-110 transition-transform`}
+            style={{ fontSize: "20px" }}
+          ></i>
+        </button>
       </div>
 
       {/* Bottom nav */}
@@ -334,12 +319,6 @@ const MLCarousel: React.FC = () => {
             onClick={() => goTo(idx, idx > current ? "right" : "left")}
             className="relative"
           >
-            {current === idx && (
-              <div
-                className={`absolute -top-1.5 left-1/2 -translate-x-1/2 w-full h-0.5 ${p.bgColor}`}
-              />
-            )}
-
             <div
               className={`px-3 py-2 border-2 font-pixel text-[10px] transition-all duration-500 ${
                 current === idx
@@ -349,12 +328,6 @@ const MLCarousel: React.FC = () => {
             >
               {String(idx + 1).padStart(2, "0")}
             </div>
-
-            {current === idx && (
-              <div
-                className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-full h-0.5 ${p.bgColor}`}
-              />
-            )}
           </button>
         ))}
       </div>
@@ -379,15 +352,86 @@ const Projects: React.FC = () => {
   return (
     <section
       id="projects"
-      className="py-16 px-4 md:px-8 max-w-6xl mx-auto border-t-4 border-dashed border-gray-700"
+      className="py-16 px-4 md:px-12 lg:px-20 max-w-6xl mx-auto"
     >
-      <SectionHeader title="Inventory / Projects" icon={<Rocket size={32} />} />
+      <SectionHeader
+        title="Projects"
+        icon={
+          <i
+            className="hn hn-plane-departure "
+            style={{ fontSize: "32px" }}
+          ></i>
+        }
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* MVP */}
         <div className="md:col-span-2 relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-retro-pink to-retro-purple opacity-75 blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
-          <div className="relative bg-retro-bg border-4 border-white p-6 md:p-8">
+          <div className="absolute -inset-1 bg-gradient-to-r from-retro-pink to-retro-purple opacity-25 blur group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+          <div className="relative bg-retro-bg/70 border-4 border-white p-6 md:p-8">
+            <div className="absolute top-0 right-0 p-2 bg-retro-yellow text-black font-pixel text-xs border-b-4 border-l-4 border-black">
+              ★ MVP ★
+            </div>
+
+            <h3 className="font-pixel text-xl md:text-2xl text-retro-pink mb-4">
+              Dooduel
+            </h3>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {["React", "Node.js", "Socket.IO", "Canvas API"].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2 py-1 bg-slate-700 text-retro-cyan font-retro text-lg border border-slate-500"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p className="font-retro text-xl text-gray-300 mb-6 leading-relaxed">
+              Real-time multiplayer party game for up to 20 players with
+              live drawing sync via WebSockets. Features anonymous voting,
+              dynamic scoring, a full drawing canvas with brush tools and
+              flood fill, and reconnection handling with rate limiting.
+            </p>
+
+            <div className="flex gap-4">
+              <a
+                href="https://scribblpro.onrender.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RetroButton variant="secondary">
+                  <span className="flex items-center gap-2">
+                    View Demo{" "}
+                    <i
+                      className="hn hn-external-link "
+                      style={{ fontSize: "14px" }}
+                    ></i>
+                  </span>
+                </RetroButton>
+              </a>
+              <a
+                href="https://github.com/esh-dev257/Dooduel"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RetroButton variant="primary">
+                  <span className="flex items-center gap-2">
+                    Source Code{" "}
+                    <i
+                      className="hn hn-github "
+                      style={{ fontSize: "14px" }}
+                    ></i>
+                  </span>
+                </RetroButton>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="md:col-span-2 relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-retro-pink to-retro-purple opacity-25 blur group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+          <div className="relative bg-retro-bg/70 border-4 border-white p-6 md:p-8">
             <div className="absolute top-0 right-0 p-2 bg-retro-yellow text-black font-pixel text-xs border-b-4 border-l-4 border-black">
               ★ MVP ★
             </div>
@@ -428,7 +472,11 @@ const Projects: React.FC = () => {
               >
                 <RetroButton variant="secondary">
                   <span className="flex items-center gap-2">
-                    View Demo <ExternalLink size={14} />
+                    View Demo{" "}
+                    <i
+                      className="hn hn-external-link "
+                      style={{ fontSize: "14px" }}
+                    ></i>
                   </span>
                 </RetroButton>
               </a>
@@ -439,7 +487,11 @@ const Projects: React.FC = () => {
               >
                 <RetroButton variant="primary">
                   <span className="flex items-center gap-2">
-                    Source Code <Github size={14} />
+                    Source Code{" "}
+                    <i
+                      className="hn hn-github "
+                      style={{ fontSize: "14px" }}
+                    ></i>
                   </span>
                 </RetroButton>
               </a>
@@ -448,7 +500,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* DSA */}
-        <div className="bg-[#201a28] border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
+        <div className="bg-[#201a28]/85 border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
           <h3 className="font-pixel text-lg text-retro-green mb-4">
             DSA Sorting Visualizer
           </h3>
@@ -457,20 +509,21 @@ const Projects: React.FC = () => {
             Quick Sort with adjustable animation speeds.
           </p>
           <a
-            href="YOUR_DSA_REPO_LINK"
+            href="https://github.com/esh-dev257/DSA-Algos-Sorting-Visualizer"
             target="_blank"
             rel="noopener noreferrer"
           >
             <RetroButton variant="primary">
               <span className="flex items-center gap-2">
-                Repo <Github size={14} />
+                Repo{" "}
+                <i className="hn hn-github " style={{ fontSize: "14px" }}></i>
               </span>
             </RetroButton>
           </a>
         </div>
 
         {/* MERN */}
-        <div className="bg-[#201a28] border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
+        <div className="bg-[#201a28]/85 border-4 border-slate-600 p-6 shadow-pixel hover:border-retro-cyan transition-colors">
           <h3 className="font-pixel text-lg text-retro-green mb-4">
             MERN E-commerce
           </h3>
@@ -479,13 +532,14 @@ const Projects: React.FC = () => {
             admin dashboard, and order management.
           </p>
           <a
-            href="YOUR_MERN_REPO_LINK"
+            href="https://github.com/esh-dev257/mern-e-commerce"
             target="_blank"
             rel="noopener noreferrer"
           >
             <RetroButton variant="primary">
               <span className="flex items-center gap-2">
-                Repo <Github size={14} />
+                Repo{" "}
+                <i className="hn hn-github " style={{ fontSize: "14px" }}></i>
               </span>
             </RetroButton>
           </a>
@@ -495,7 +549,15 @@ const Projects: React.FC = () => {
       {/* ═══════════ AI / ML CAROUSEL ═══════════ */}
 
       <div className="mt-20">
-        <SectionHeader title="AI / ML Projects" icon={<Brain size={28} />} />
+        <SectionHeader
+          title="AI / ML Projects"
+          icon={
+            <i
+              className="hn hn-face-thinking "
+              style={{ fontSize: "28px" }}
+            ></i>
+          }
+        />
       </div>
 
       <div className="mt-10">

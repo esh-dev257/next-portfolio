@@ -3,13 +3,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
-import { Monitor, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import RetroButton from "./RetroButton";
+import AiBuilders from "../../public/ai-builders-cup.png";
+import CRTTransition from "./CRTTransition";
 
 import Educerns from "../../public/educerns.png";
 import Vizuara from "../../public/vizuara.ai.png";
 import FirstPrincipleLabs from "../../public/first-principle-labs.png";
 import ResearchVizuara from "../../public/research-vizuara.png";
+import FlyVidesh from "../../public/flyvidesh.online_.png";
 
 const RecentWork: React.FC = () => {
   const works = [
@@ -29,7 +31,7 @@ const RecentWork: React.FC = () => {
       tech: ["React", "Firebase"],
       color: "border-retro-green",
       desc: "Designed and developed a high-conversion, responsive platform with optimized UI components and seamless cross-browser compatibility.",
-      img: Vizuara,
+      img: FlyVidesh,
     },
     {
       title: "First Principle Labs",
@@ -40,6 +42,16 @@ const RecentWork: React.FC = () => {
       desc: "Architected and built the platform from scratch using modular React components and clean UI design for industry professionals.",
       img: FirstPrincipleLabs,
     },
+    {
+      title: "AI Builders Cup",
+      url: "https://ai-builders-cup-v2.vercel.app/",
+      status: "Live",
+      tech: ["React", "Tailwind"],
+      color: "border-retro-purple",
+      desc: "Built an interactive competition platform for school students to showcase AI projects, featuring event details, registration flows, and a polished responsive UI.",
+      img: AiBuilders,
+    },
+
     {
       title: "Research Vizuara",
       url: "https://research.vizuara.ai/",
@@ -109,11 +121,27 @@ const RecentWork: React.FC = () => {
   const currentWork = works[currentIndex];
 
   return (
-    <section
-      id="recent-work"
-      className="py-16 px-4 md:px-8 max-w-6xl mx-auto border-t-4 border-dashed border-gray-700"
-    >
-      <SectionHeader title="Live Deployments" icon={<Monitor size={32} />} />
+    <section id="recent-work" className="py-16 px-4 md:px-8 max-w-6xl mx-auto ">
+      <SectionHeader
+        title="Live Deployments"
+        icon={
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="4" y="3" width="16" height="2" fill="currentColor" />
+            <rect x="2" y="5" width="2" height="10" fill="currentColor" />
+            <rect x="4" y="15" width="16" height="2" fill="currentColor" />
+            <rect x="20" y="5" width="2" height="10" fill="currentColor" />
+            <rect x="6" y="19" width="12" height="2" fill="currentColor" />
+            <rect x="9" y="17" width="2" height="2" fill="currentColor" />
+            <rect x="13" y="17" width="2" height="2" fill="currentColor" />
+          </svg>
+        }
+      />
 
       <div className="relative flex items-center justify-center gap-4 md:gap-8">
         {/* Prev Button (Desktop) */}
@@ -121,7 +149,7 @@ const RecentWork: React.FC = () => {
           onClick={prevSlide}
           className="hidden md:flex bg-slate-800 p-2 border-2 border-white hover:bg-slate-700 active:scale-95 transition-all text-white"
         >
-          <ChevronLeft size={32} />
+          <i className="hn hn-arrow-left " style={{ fontSize: "24px" }}></i>
         </button>
 
         {/* Carousel Container */}
@@ -141,28 +169,8 @@ const RecentWork: React.FC = () => {
               {/* Screen Container with Curvature */}
               <div className="bg-black overflow-hidden relative aspect-video rounded-lg shadow-[inset_0_0_20px_rgba(0,0,0,1)] border border-gray-800 group">
                 {/* Content (Image Preview) */}
-                <div className="w-full h-full relative z-0">
-                  <Image
-                    key={currentWork.title}
-                    src={currentWork.img}
-                    alt={`${currentWork.title} Preview`}
-                    fill
-                    className="object-cover opacity-80"
-                    sizes="(max-width: 768px) 100vw, 800px"
-                  />
-                </div>
-
-                {/* CRT Effects */}
-                <div className="absolute inset-0 z-10 pointer-events-none">
-                  {/* Scanlines */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20"></div>
-                  {/* Flicker */}
-                  <div className="absolute inset-0 bg-white opacity-[0.02] animate-pulse"></div>
-                  {/* Vignette */}
-                  <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0)_60%,rgba(0,0,0,0.5)_100%)]"></div>
-                  {/* Curved Glass Reflection */}
-                  <div className="absolute top-0 right-0 w-full h-16 bg-linear-to-b from-white/5 to-transparent skew-x-12"></div>
-                </div>
+                {/* CRT Screen with Channel Change Animation */}
+                <CRTTransition src={currentWork.img} alt={currentWork.title} />
 
                 {/* Info Overlay (Visible on Hover or Active) */}
                 <div className="absolute bottom-0 left-0 w-full bg-black/80 border-t border-retro-green p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20 flex justify-between items-center backdrop-blur-sm">
@@ -181,7 +189,11 @@ const RecentWork: React.FC = () => {
                   >
                     <RetroButton variant="primary" className="text-[10px] py-2">
                       <span className="flex items-center gap-1">
-                        VISIT <ExternalLink size={12} />
+                        VISIT{" "}
+                        <i
+                          className="hn hn-external-link "
+                          style={{ fontSize: "12px" }}
+                        ></i>
                       </span>
                     </RetroButton>
                   </a>
@@ -203,7 +215,7 @@ const RecentWork: React.FC = () => {
               onClick={prevSlide}
               className="bg-slate-800 p-2 border border-white text-white"
             >
-              <ChevronLeft />
+              <i className="hn hn-arrow-left" style={{ fontSize: "24px" }}></i>
             </button>
             <span className="font-pixel text-xs text-white">
               {currentIndex + 1} / {works.length}
@@ -212,7 +224,10 @@ const RecentWork: React.FC = () => {
               onClick={nextSlide}
               className="bg-slate-800 p-2 border border-white text-white"
             >
-              <ChevronRight />
+              <i
+                className="hn hn-arrow-right "
+                style={{ fontSize: "24px" }}
+              ></i>
             </button>
           </div>
 
@@ -239,7 +254,7 @@ const RecentWork: React.FC = () => {
           onClick={nextSlide}
           className="hidden md:flex bg-slate-800 p-2 border-2 border-white hover:bg-slate-700 active:scale-95 transition-all text-white"
         >
-          <ChevronRight size={32} />
+          <i className="hn hn-arrow-right " style={{ fontSize: "24px" }}></i>
         </button>
       </div>
     </section>

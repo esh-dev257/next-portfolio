@@ -11,7 +11,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, icon }) => {
       <div className="text-retro-yellow animate-bounce">
         {icon}
       </div>
-      <h2 className="font-pixel text-xl sm:text-2xl md:text-3xl text-retro-cyan border-b-4 border-retro-cyan pb-2 inline-block shadow-pixel bg-retro-bg">
+      <h2 className="font-pixel text-xl sm:text-2xl md:text-3xl text-retro-cyan border-b-4 border-retro-cyan pb-2 inline-block">
         {title}
       </h2>
     </div>

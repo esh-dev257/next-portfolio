@@ -61,7 +61,7 @@ const fileSystem = [
           },
           {
             id: "js",
-            name: "JavaScript ES6+",
+            name: "JavaScript",
             icon: <Braces />,
             type: "Language",
             ver: "ES2022",
@@ -227,6 +227,22 @@ const fileSystem = [
             ver: "N/A",
             desc: "JSON Web Tokens, a compact standard for creating access tokens for an application.",
           },
+          {
+            id: "docker",
+            name: "Docker",
+            icon: <Box />,
+            type: "DevOps",
+            ver: "25.0",
+            desc: "Containerization platform used to package applications and their dependencies for consistent deployment.",
+          },
+          {
+            id: "django",
+            name: "Django",
+            icon: <Terminal />,
+            type: "Web Framework",
+            ver: "5.0",
+            desc: "A batteries-included Python framework for building robust, scalable, and secure backend applications.",
+          },
         ],
       },
       {
@@ -332,8 +348,8 @@ export default function Skills() {
     >
       <SectionHeader title="Skills" icon={<Cpu size={24} />} />
 
-      <div className="max-w-5xl mx-auto bg-[#1a2328]/50 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
-        <div className="bg-slate-900/80 px-2 sm:px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
+      <div className="max-w-5xl mx-auto bg-[#1a2328]/75 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
+        <div className="bg-slate-900/75 px-2 sm:px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
           <div className="flex items-center gap-1 sm:gap-2">
             <Monitor size={12} className="text-cyan-400 sm:hidden" />
             <Monitor size={14} className="text-cyan-400 hidden sm:block" />
@@ -353,7 +369,9 @@ export default function Skills() {
             {/* These are just decorative, no functionality needed */}
           </div>
           <div className="flex-1 bg-slate-900 border border-slate-700 rounded-md px-2 py-1 text-[10px] sm:text-xs font-mono text-slate-300 flex items-center gap-1 sm:gap-2 overflow-x-auto">
-            <span className="text-slate-500 whitespace-nowrap">{drive.name}:</span>
+            <span className="text-slate-500 whitespace-nowrap">
+              {drive.name}:
+            </span>
             <span className="text-slate-600">/</span>
             <span className="text-cyan-400 truncate">
               {activeFolder.name.toUpperCase()}
@@ -446,7 +464,9 @@ export default function Skills() {
                     <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
                       Version
                     </span>
-                    <span className="text-slate-300 text-[11px] sm:text-xs">{selectedFile.ver}</span>
+                    <span className="text-slate-300 text-[11px] sm:text-xs">
+                      {selectedFile.ver}
+                    </span>
                   </div>
                   <div>
                     <span className="text-slate-500 block text-[10px] uppercase tracking-wider">
@@ -459,21 +479,18 @@ export default function Skills() {
                   </div>
                 </div>
               </div>
-
-              <div className="p-2 sm:p-3 bg-slate-900/50 border-t border-slate-800">
-                <button className="w-full bg-slate-700/80 border border-slate-600 rounded-md py-2 px-2 text-xs font-mono text-slate-300 hover:bg-slate-700 active:bg-slate-600 shadow-sm flex items-center justify-center gap-2 touch-manipulation">
-                  <Terminal size={14} />
-                  EXECUTE
-                </button>
-              </div>
             </div>
           )}
         </div>
 
         <div className="bg-slate-800/80 px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-mono text-slate-500 border-t border-slate-700 flex justify-between items-center">
           <div className="flex gap-2 sm:gap-4 truncate">
-            <span className="whitespace-nowrap">{activeFolder.children?.length} object(s)</span>
-            <span className="hidden sm:inline">{selectedFile ? "1 selected" : "0 selected"}</span>
+            <span className="whitespace-nowrap">
+              {activeFolder.children?.length} object(s)
+            </span>
+            <span className="hidden sm:inline">
+              {selectedFile ? "1 selected" : "0 selected"}
+            </span>
           </div>
           <div className="whitespace-nowrap">{drive.name}\</div>
         </div>

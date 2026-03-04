@@ -1,25 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const messages = [
   "Hi, I'm Eshita!",
   "I build cool web apps!",
-  "Full Stack Wizard 🧙‍♀️",
-  "Check out my stats 📊",
-  "Pixel art is awesome 👾",
-  "Let's code something! 💻",
+  "Full Stack Developer",
+  "Check out my stats",
+  "Check out my game!",
+  "Let's code something!!",
 ];
 const PixelAvatar: React.FC = () => {
   const [msgIndex, setMsgIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const cycleMessage = () => {
     setMsgIndex((prev) => (prev + 1) % messages.length);
   };
 
-  // Handle mouse leave - hide bubble
+  useEffect(() => {
+    const interval = setInterval(() => {
+      cycleMessage();
+    }, 4000); // EXPERIMENT: Change 4000 (ms) to adjust how fast the dialogues change automatically
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    cycleMessage();
+  };
+
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleClick = () => {
+    cycleMessage();
   };
 
   return (
@@ -27,6 +41,7 @@ const PixelAvatar: React.FC = () => {
       className="relative group cursor-pointer inline-block"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       <style>{`
         @keyframes gentle-bounce {
@@ -38,15 +53,20 @@ const PixelAvatar: React.FC = () => {
         }
       `}</style>
 
-      {/* Chat Bubble */}
       <div
-        className={`absolute -top-20 left-1/2 -translate-x-1/2 w-48 transition-opacity duration-200 z-20 ${isHovered ? "opacity-100" : "opacity-0"}`}
+        className={`absolute w-48 transition-opacity duration-200 z-20 ${isHovered ? "opacity-100" : "opacity-100 md:opacity-0"} 
+          -top-20 left-1/2 -translate-x-1/2 
+          /* EXPERIMENT: Adjust 'opacity-100' above to 'opacity-0' if you want to hide it by default on mobile again */
+          md:top-[20%] md:-translate-y-1/2 md:left-full md:translate-x-0 md:ml-4`}
       >
         <div className="bg-white border-4 border-black p-2 relative shadow-pixel">
           <p className="font-pixel text-[10px] text-black text-center leading-tight">
             {messages[msgIndex]}
           </p>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-black"></div>
+          {/* Mobile Arrow (Bottom) */}
+          <div className="absolute md:hidden -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-black"></div>
+          {/* Desktop Arrow (Left) */}
+          <div className="absolute hidden md:block -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-black"></div>
         </div>
       </div>
 

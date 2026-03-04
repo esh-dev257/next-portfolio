@@ -19,16 +19,6 @@ export interface SkillCategory {
   skills: string[];
 }
 
-  import type { StaticImageData } from 'next/image';
-
-  export interface ParallaxLayer {
-    id: string;
-    src: string | StaticImageData;
-    speed: number; // 0 = static, 1 = moves with scroll
-    zIndex: number;
-    alt: string;
-  }
-
 export interface ScrollState {
   scrollY: number;
 }
