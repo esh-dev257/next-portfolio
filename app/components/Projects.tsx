@@ -34,11 +34,11 @@ const mlProjects = [
         <rect x="17" y="12" width="2" height="2" fill="currentColor" />
       </svg>
     ),
-    borderColor: "border-retro-purple",
-    textColor: "text-retro-purple",
-    bgColor: "bg-retro-purple",
-    bgTint: "bg-retro-purple/10",
-    glowColor: "rgba(168,85,247,0.4)",
+    borderColor: "border-retro-cyan",
+    textColor: "text-retro-cyan",
+    bgColor: "bg-retro-cyan",
+    bgTint: "bg-retro-cyan/10",
+    glowColor: "rgba(34,211,238,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(168,85,247,0.3)]",
     description:
       "Machine learning model that predicts passenger survival on the Titanic based on various features. Built using React, Tailwind CSS for the frontend, and Python ML libraries (Scikit-learn, Pandas) for data processing and model training.",
@@ -49,10 +49,10 @@ const mlProjects = [
   {
     title: "Brain Tumor Detection",
     icon: <i className="hn hn-search " style={{ fontSize: "28px" }}></i>,
-    borderColor: "border-retro-green",
-    textColor: "text-retro-green",
-    bgColor: "bg-retro-green",
-    bgTint: "bg-retro-green/10",
+    borderColor: "border-retro-pink",
+    textColor: "text-retro-pink",
+    bgColor: "bg-retro-pink",
+    bgTint: "bg-retro-pink/10",
     glowColor: "rgba(34,197,94,0.4)",
     shadowClass: "shadow-[0_0_30px_rgba(34,197,94,0.3)]",
     description:
@@ -99,6 +99,10 @@ const MLCarousel: React.FC = () => {
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
 
   const project = mlProjects[current];
 
@@ -143,22 +147,22 @@ const MLCarousel: React.FC = () => {
       className="relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={(e) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+      }}
+      onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+      onTouchEnd={() => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+        if (isLeftSwipe) next();
+        if (isRightSwipe) prev();
+      }}
     >
       {/* Corner brackets */}
       <div className="relative">
-        <div
-          className={`absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 ${project.borderColor} transition-colors duration-500`}
-        />
-        <div
-          className={`absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 ${project.borderColor} transition-colors duration-500`}
-        />
-        <div
-          className={`absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 ${project.borderColor} transition-colors duration-500`}
-        />
-        <div
-          className={`absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 ${project.borderColor} transition-colors duration-500`}
-        />
-
         <div
           className={`bg-[#1a2328]/90 border-4 ${project.borderColor}
             transition-all duration-500 ${project.shadowClass} relative overflow-hidden`}
@@ -219,18 +223,6 @@ const MLCarousel: React.FC = () => {
                   />
 
                   {/* Image corner accents */}
-                  <div
-                    className={`absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 ${project.borderColor} z-10`}
-                  />
-                  <div
-                    className={`absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 ${project.borderColor} z-10`}
-                  />
-                  <div
-                    className={`absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 ${project.borderColor} z-10`}
-                  />
-                  <div
-                    className={`absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 ${project.borderColor} z-10`}
-                  />
 
                   {/* Image overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-[5]" />
@@ -279,7 +271,7 @@ const MLCarousel: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-block self-start"
                 >
-                  <RetroButton variant="primary">
+                  <RetroButton variant="cyan_bg">
                     <span className="flex items-center gap-2">
                       View Project{" "}
                       <i
@@ -292,29 +284,31 @@ const MLCarousel: React.FC = () => {
               </div>
             </div>
           </div>
-
-          {/* Nav Arrows */}
-          <button
-            onClick={prev}
-            className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
-              bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn`}
-          >
-            <i
-              className="hn hn-chevron-left ${project.textColor} group-hover/btn:scale-110 transition-transform"
-              style={{ fontSize: "20px" }}
-            ></i>
-          </button>
-          <button
-            onClick={next}
-            className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
-              bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn`}
-          >
-            <i
-              className="hn hn-chevron-right ${project.textColor} group-hover/btn:scale-110 transition-transform"
-              style={{ fontSize: "20px" }}
-            ></i>
-          </button>
         </div>
+
+        {/* Nav Arrows */}
+        <button
+          onClick={prev}
+          className={`absolute -left-4 md:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
+            bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn hidden md:flex`}
+          aria-label="Previous project"
+        >
+          <i
+            className={`hn hn-arrow-left ${project.textColor} group-hover/btn:scale-110 transition-transform`}
+            style={{ fontSize: "20px" }}
+          ></i>
+        </button>
+        <button
+          onClick={next}
+          className={`absolute -right-4 md:-right-12 lg:-right-16 top-1/2 -translate-y-1/2 p-2 border-2 ${project.borderColor}
+            bg-slate-900/90 transition-all duration-300 opacity-60 hover:opacity-100 z-20 group/btn hidden md:flex`}
+          aria-label="Next project"
+        >
+          <i
+            className={`hn hn-arrow-right ${project.textColor} group-hover/btn:scale-110 transition-transform`}
+            style={{ fontSize: "20px" }}
+          ></i>
+        </button>
       </div>
 
       {/* Bottom nav */}
@@ -325,12 +319,6 @@ const MLCarousel: React.FC = () => {
             onClick={() => goTo(idx, idx > current ? "right" : "left")}
             className="relative"
           >
-            {current === idx && (
-              <div
-                className={`absolute -top-1.5 left-1/2 -translate-x-1/2 w-full h-0.5 ${p.bgColor}`}
-              />
-            )}
-
             <div
               className={`px-3 py-2 border-2 font-pixel text-[10px] transition-all duration-500 ${
                 current === idx
@@ -340,12 +328,6 @@ const MLCarousel: React.FC = () => {
             >
               {String(idx + 1).padStart(2, "0")}
             </div>
-
-            {current === idx && (
-              <div
-                className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-full h-0.5 ${p.bgColor}`}
-              />
-            )}
           </button>
         ))}
       </div>
@@ -368,9 +350,12 @@ const MLCarousel: React.FC = () => {
 // ─── Main Component ───
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
+    <section
+      id="projects"
+      className="py-16 px-4 md:px-12 lg:px-20 max-w-6xl mx-auto"
+    >
       <SectionHeader
-        title="Inventory / Projects"
+        title="Projects"
         icon={
           <i
             className="hn hn-plane-departure "
@@ -461,7 +446,7 @@ const Projects: React.FC = () => {
             Quick Sort with adjustable animation speeds.
           </p>
           <a
-            href="YOUR_DSA_REPO_LINK"
+            href="https://github.com/esh-dev257/DSA-Algos-Sorting-Visualizer"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -484,7 +469,7 @@ const Projects: React.FC = () => {
             admin dashboard, and order management.
           </p>
           <a
-            href="YOUR_MERN_REPO_LINK"
+            href="https://github.com/esh-dev257/mern-e-commerce"
             target="_blank"
             rel="noopener noreferrer"
           >

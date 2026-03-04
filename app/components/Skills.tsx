@@ -1,6 +1,41 @@
 "use client";
 import React, { useState } from "react";
-
+import {
+  Folder,
+  FileCode,
+  HardDrive,
+  ChevronDown,
+  Monitor,
+  Cpu,
+  Terminal,
+  Layers,
+  Layout,
+  Palette,
+  Braces,
+  Code2,
+  Hexagon,
+  Server,
+  Database as DbIcon,
+  Box,
+  Plug,
+  GitBranch,
+  Cloud,
+  MessageSquare,
+  Flame,
+  Key,
+  Move,
+  Share2,
+  Boxes,
+  Component,
+  Triangle,
+  Shield,
+  TrendingUp,
+  TabletSmartphone,
+  Blocks,
+  Webhook,
+  CloudUpload,
+  Database,
+} from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const fileSystem = [
@@ -8,33 +43,26 @@ const fileSystem = [
     id: "root",
     name: "Skillset",
     type: "drive",
-    icon: (
-      <i className="hn hn-save text-slate-400" style={{ fontSize: "16px" }}></i>
-    ),
+    icon: <HardDrive size={16} className="text-slate-400" />,
     children: [
       {
         id: "languages",
         name: "Languages",
         type: "folder",
-        icon: (
-          <i
-            className="hn hn-folder text-red-400"
-            style={{ fontSize: "16px" }}
-          ></i>
-        ),
+        icon: <Folder size={16} className="text-red-400" />,
         children: [
           {
             id: "cpp",
             name: "C++",
-            icon: <i className="hn hn-code " style={{ fontSize: "24px" }}></i>,
+            icon: <Code2 />,
             type: "Language",
             ver: "20",
             desc: "A high-performance language used for systems programming, game development, and competitive programming.",
           },
           {
             id: "js",
-            name: "JavaScript ES6+",
-            icon: <i className="hn hn-code " style={{ fontSize: "24px" }}></i>,
+            name: "JavaScript",
+            icon: <Braces />,
             type: "Language",
             ver: "ES2022",
             desc: "The core language of the web, enabling dynamic and interactive user experiences.",
@@ -42,7 +70,7 @@ const fileSystem = [
           {
             id: "ts",
             name: "TypeScript",
-            icon: <i className="hn hn-file " style={{ fontSize: "24px" }}></i>,
+            icon: <FileCode />,
             type: "Language",
             ver: "5.3.0",
             desc: "A statically typed superset of JavaScript that enhances code quality and maintainability.",
@@ -50,7 +78,7 @@ const fileSystem = [
           {
             id: "html",
             name: "HTML5",
-            icon: <i className="hn hn-code " style={{ fontSize: "24px" }}></i>,
+            icon: <Code2 />,
             type: "Markup",
             ver: "5.2",
             desc: "The standard markup language for creating web pages and web applications.",
@@ -58,9 +86,7 @@ const fileSystem = [
           {
             id: "css",
             name: "CSS3",
-            icon: (
-              <i className="hn hn-themes " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Palette />,
             type: "Stylesheet",
             ver: "Level 3",
             desc: "The language for describing the presentation of web pages, including colors, layout, and fonts.",
@@ -68,9 +94,7 @@ const fileSystem = [
           {
             id: "sql",
             name: "SQL",
-            icon: (
-              <i className="hn hn-database " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Database />,
             type: "Query Language",
             ver: "SQL:2023",
             desc: "A standard language for storing, manipulating and retrieving data in relational databases.",
@@ -81,17 +105,12 @@ const fileSystem = [
         id: "frontend",
         name: "Frontend",
         type: "folder",
-        icon: (
-          <i
-            className="hn hn-folder text-blue-400"
-            style={{ fontSize: "16px" }}
-          ></i>
-        ),
+        icon: <Folder size={16} className="text-blue-400" />,
         children: [
           {
             id: "react",
             name: "React.js",
-            icon: <i className="hn hn-grid " style={{ fontSize: "24px" }}></i>,
+            icon: <Layers />,
             type: "Library",
             ver: "18.2.0",
             desc: "A JavaScript library for building user interfaces with a component-based architecture.",
@@ -99,7 +118,7 @@ const fileSystem = [
           {
             id: "next",
             name: "Next.js",
-            icon: <i className="hn hn-grid " style={{ fontSize: "24px" }}></i>,
+            icon: <Layout />,
             type: "Framework",
             ver: "14.1.0",
             desc: "The React Framework for production. Enables SSR, ISR, and edge routing capabilities.",
@@ -107,9 +126,7 @@ const fileSystem = [
           {
             id: "redux",
             name: "Redux Toolkit",
-            icon: (
-              <i className="hn hn-box-usd " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Boxes />,
             type: "State Management",
             ver: "2.1.0",
             desc: "The official, opinionated, batteries-included toolset for efficient Redux development.",
@@ -117,7 +134,7 @@ const fileSystem = [
           {
             id: "context",
             name: "Context API",
-            icon: <i className="hn hn-share " style={{ fontSize: "24px" }}></i>,
+            icon: <Share2 />,
             type: "React Feature",
             ver: "18.2.0",
             desc: "A React structure that allows passing data through the component tree without prop-drilling.",
@@ -125,9 +142,7 @@ const fileSystem = [
           {
             id: "tailwind",
             name: "Tailwind CSS",
-            icon: (
-              <i className="hn hn-themes " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Palette />,
             type: "CSS Framework",
             ver: "3.4.0",
             desc: "A utility-first CSS framework for rapid UI development and composable design systems.",
@@ -135,9 +150,7 @@ const fileSystem = [
           {
             id: "framer",
             name: "Framer Motion",
-            icon: (
-              <i className="hn hn-arrows-alt " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Move />,
             type: "Animation Library",
             ver: "11.0",
             desc: "A production-ready motion library for React, making complex animations simple.",
@@ -145,9 +158,7 @@ const fileSystem = [
           {
             id: "bootstrap",
             name: "Bootstrap",
-            icon: (
-              <i className="hn hn-code-block " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Component />,
             type: "CSS Framework",
             ver: "5.3",
             desc: "A popular front-end toolkit for designing responsive, mobile-first websites.",
@@ -158,17 +169,12 @@ const fileSystem = [
         id: "backend",
         name: "Backend & Cloud",
         type: "folder",
-        icon: (
-          <i
-            className="hn hn-folder text-green-400"
-            style={{ fontSize: "16px" }}
-          ></i>
-        ),
+        icon: <Folder size={16} className="text-green-400" />,
         children: [
           {
             id: "node",
             name: "Node.js",
-            icon: <i className="hn hn-box " style={{ fontSize: "24px" }}></i>,
+            icon: <Hexagon />,
             type: "Runtime",
             ver: "20.11",
             desc: "A JavaScript runtime built on Chrome's V8 engine, featuring asynchronous I/O.",
@@ -176,9 +182,7 @@ const fileSystem = [
           {
             id: "express",
             name: "Express.js",
-            icon: (
-              <i className="hn hn-database " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Server />,
             type: "Framework",
             ver: "4.18",
             desc: "A minimal and flexible Node.js web application framework for building APIs and web apps.",
@@ -186,7 +190,7 @@ const fileSystem = [
           {
             id: "firebase",
             name: "Firebase",
-            icon: <i className="hn hn-fire " style={{ fontSize: "24px" }}></i>,
+            icon: <Flame />,
             type: "BaaS",
             ver: "Latest",
             desc: "A platform by Google for creating mobile and web applications, offering a suite of cloud services.",
@@ -194,9 +198,7 @@ const fileSystem = [
           {
             id: "mongo",
             name: "MongoDB",
-            icon: (
-              <i className="hn hn-database " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <DbIcon />,
             type: "NoSQL Database",
             ver: "7.0",
             desc: "A document-oriented NoSQL database used for high-volume data storage.",
@@ -204,7 +206,7 @@ const fileSystem = [
           {
             id: "rest",
             name: "RESTful APIs",
-            icon: <i className="hn hn-bolt " style={{ fontSize: "24px" }}></i>,
+            icon: <Plug />,
             type: "API Architecture",
             ver: "N/A",
             desc: "An architectural style for designing networked applications, based on stateless communication.",
@@ -212,7 +214,7 @@ const fileSystem = [
           {
             id: "cloudinary",
             name: "Cloudinary",
-            icon: <i className="hn hn-cloud " style={{ fontSize: "24px" }}></i>,
+            icon: <CloudUpload />,
             type: "Media Service",
             ver: "Latest",
             desc: "An end-to-end media management service for images and videos.",
@@ -220,12 +222,26 @@ const fileSystem = [
           {
             id: "jwt",
             name: "JWT Auth",
-            icon: (
-              <i className="hn hn-lock-open " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <Key />,
             type: "Authentication",
             ver: "N/A",
             desc: "JSON Web Tokens, a compact standard for creating access tokens for an application.",
+          },
+          {
+            id: "docker",
+            name: "Docker",
+            icon: <Box />,
+            type: "DevOps",
+            ver: "25.0",
+            desc: "Containerization platform used to package applications and their dependencies for consistent deployment.",
+          },
+          {
+            id: "django",
+            name: "Django",
+            icon: <Terminal />,
+            type: "Web Framework",
+            ver: "5.0",
+            desc: "A batteries-included Python framework for building robust, scalable, and secure backend applications.",
           },
         ],
       },
@@ -233,22 +249,12 @@ const fileSystem = [
         id: "concepts",
         name: "Tools & Concepts",
         type: "folder",
-        icon: (
-          <i
-            className="hn hn-folder text-yellow-400"
-            style={{ fontSize: "16px" }}
-          ></i>
-        ),
+        icon: <Folder size={16} className="text-yellow-400" />,
         children: [
           {
             id: "git",
             name: "Git/GitHub",
-            icon: (
-              <i
-                className="hn hn-code-branch "
-                style={{ fontSize: "24px" }}
-              ></i>
-            ),
+            icon: <GitBranch />,
             type: "VCS",
             ver: "2.43",
             desc: "Distributed version control and a collaborative platform for code hosting.",
@@ -256,9 +262,7 @@ const fileSystem = [
           {
             id: "postman",
             name: "Postman",
-            icon: (
-              <i className="hn hn-comment " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <MessageSquare />,
             type: "API Tool",
             ver: "10.17",
             desc: "A collaborative platform for API development, testing, and documentation.",
@@ -266,7 +270,7 @@ const fileSystem = [
           {
             id: "vercel",
             name: "Vercel",
-            icon: <i className="hn hn-play " style={{ fontSize: "24px" }}></i>,
+            icon: <Triangle />,
             type: "Deployment",
             ver: "Latest",
             desc: "A cloud platform for static sites and Serverless Functions, specializing in Next.js.",
@@ -274,7 +278,7 @@ const fileSystem = [
           {
             id: "recaptcha",
             name: "reCAPTCHA",
-            icon: <i className="hn hn-lock " style={{ fontSize: "24px" }}></i>,
+            icon: <Shield />,
             type: "Security",
             ver: "v3",
             desc: "A Google service that helps protect sites from spam and abuse by distinguishing humans from bots.",
@@ -282,9 +286,7 @@ const fileSystem = [
           {
             id: "seo",
             name: "SEO",
-            icon: (
-              <i className="hn hn-trending " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <TrendingUp />,
             type: "Concept",
             ver: "N/A",
             desc: "Search Engine Optimization, the process of improving site quality to increase visibility.",
@@ -292,9 +294,7 @@ const fileSystem = [
           {
             id: "responsive",
             name: "Responsive Design",
-            icon: (
-              <i className="hn hn-mobile " style={{ fontSize: "24px" }}></i>
-            ),
+            icon: <TabletSmartphone />,
             type: "Concept",
             ver: "N/A",
             desc: "A web design approach to make web pages render well on a variety of devices and screen sizes.",
@@ -302,7 +302,7 @@ const fileSystem = [
           {
             id: "oops",
             name: "OOPs",
-            icon: <i className="hn hn-grid " style={{ fontSize: "24px" }}></i>,
+            icon: <Blocks />,
             type: "Paradigm",
             ver: "N/A",
             desc: "Object-Oriented Programming, a paradigm based on the concept of 'objects'.",
@@ -310,7 +310,7 @@ const fileSystem = [
           {
             id: "dsa",
             name: "DSA",
-            icon: <i className="hn hn-link " style={{ fontSize: "24px" }}></i>,
+            icon: <Webhook />,
             type: "Concept",
             ver: "N/A",
             desc: "Data Structures and Algorithms, the foundation for efficient problem-solving and software design.",
@@ -342,23 +342,17 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
-      <SectionHeader
-        title="Skills"
-        icon={<i className="hn hn-cog " style={{ fontSize: "24px" }}></i>}
-      />
+    <section
+      id="skills"
+      className="py-16 px-4 md:px-8 max-w-6xl mx-auto border-t-4 border-dashed border-gray-700"
+    >
+      <SectionHeader title="Skills" icon={<Cpu size={24} />} />
 
-      <div className="max-w-5xl mx-auto bg-[#1a2328]/80 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
-        <div className="bg-slate-900/90 px-2 sm:px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
+      <div className="max-w-5xl mx-auto bg-[#1a2328]/75 border border-slate-700 rounded-lg shadow-2xl shadow-black/30 overflow-hidden">
+        <div className="bg-slate-900/75 px-2 sm:px-3 py-1.5 flex justify-between items-center select-none border-b border-slate-700/50">
           <div className="flex items-center gap-1 sm:gap-2">
-            <i
-              className="hn hn-tv text-cyan-400 sm:hidden"
-              style={{ fontSize: "12px" }}
-            ></i>
-            <i
-              className="hn hn-tv text-cyan-400 hidden sm:block"
-              style={{ fontSize: "14px" }}
-            ></i>
+            <Monitor size={12} className="text-cyan-400 sm:hidden" />
+            <Monitor size={14} className="text-cyan-400 hidden sm:block" />
             <span className="font-pixel text-[10px] sm:text-xs text-slate-300 tracking-wider truncate">
               SKILL_EXPLORER.EXE
             </span>
@@ -390,14 +384,8 @@ export default function Skills() {
             <div className="font-mono text-xs sm:text-sm space-y-1">
               <div>
                 <div className="flex items-center gap-2 py-1 px-2 text-slate-400 text-xs sm:text-sm">
-                  <i
-                    className="hn hn-chevron-down sm:hidden"
-                    style={{ fontSize: "14px" }}
-                  ></i>
-                  <i
-                    className="hn hn-chevron-down hidden sm:block"
-                    style={{ fontSize: "16px" }}
-                  ></i>
+                  <ChevronDown size={14} className="sm:hidden" />
+                  <ChevronDown size={16} className="hidden sm:block" />
                   {drive.icon}
                   <span className="truncate">{drive.name}</span>
                 </div>
@@ -490,16 +478,6 @@ export default function Skills() {
                     </span>
                   </div>
                 </div>
-              </div>
-
-              <div className="p-2 sm:p-3 bg-slate-900/50 border-t border-slate-800">
-                <button className="w-full bg-slate-700/80 border border-slate-600 rounded-md py-2 px-2 text-xs font-mono text-slate-300 hover:bg-slate-700 active:bg-slate-600 shadow-sm flex items-center justify-center gap-2 touch-manipulation">
-                  <i
-                    className="hn hn-code-block "
-                    style={{ fontSize: "14px" }}
-                  ></i>
-                  EXECUTE
-                </button>
               </div>
             </div>
           )}

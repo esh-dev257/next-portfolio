@@ -109,11 +109,11 @@ const RecentWork: React.FC = () => {
   const currentWork = works[currentIndex];
 
   return (
-    <section
-      id="recent-work"
-      className="py-16 px-4 md:px-8 max-w-6xl mx-auto "
-    >
-      <SectionHeader title="Live Deployments" icon={<i className="hn hn-tv " style={{ fontSize: '32px' }} ></i>} />
+    <section id="recent-work" className="py-16 px-4 md:px-8 max-w-6xl mx-auto ">
+      <SectionHeader
+        title="Live Deployments"
+        icon={<i className="hn hn-tv " style={{ fontSize: "32px" }}></i>}
+      />
 
       <div className="relative flex items-center justify-center gap-4 md:gap-8">
         {/* Prev Button (Desktop) */}
@@ -121,7 +121,7 @@ const RecentWork: React.FC = () => {
           onClick={prevSlide}
           className="hidden md:flex bg-slate-800 p-2 border-2 border-white hover:bg-slate-700 active:scale-95 transition-all text-white"
         >
-          <i className="hn hn-chevron-left " style={{ fontSize: '32px' }} ></i>
+          <i className="hn hn-chevron-left " style={{ fontSize: "32px" }}></i>
         </button>
 
         {/* Carousel Container */}
@@ -181,7 +181,11 @@ const RecentWork: React.FC = () => {
                   >
                     <RetroButton variant="primary" className="text-[10px] py-2">
                       <span className="flex items-center gap-1">
-                        VISIT <i className="hn hn-external-link " style={{ fontSize: '12px' }} ></i>
+                        VISIT{" "}
+                        <i
+                          className="hn hn-external-link "
+                          style={{ fontSize: "12px" }}
+                        ></i>
                       </span>
                     </RetroButton>
                   </a>
@@ -203,7 +207,7 @@ const RecentWork: React.FC = () => {
               onClick={prevSlide}
               className="bg-slate-800 p-2 border border-white text-white"
             >
-              <i className="hn hn-chevron-left " style={{ fontSize: '24px' }} ></i>
+              <i className="hn hn-arrow-left" style={{ fontSize: "24px" }}></i>
             </button>
             <span className="font-pixel text-xs text-white">
               {currentIndex + 1} / {works.length}
@@ -212,7 +216,10 @@ const RecentWork: React.FC = () => {
               onClick={nextSlide}
               className="bg-slate-800 p-2 border border-white text-white"
             >
-              <i className="hn hn-chevron-right " style={{ fontSize: '24px' }} ></i>
+              <i
+                className="hn hn-arrow-right "
+                style={{ fontSize: "24px" }}
+              ></i>
             </button>
           </div>
 
@@ -239,7 +246,7 @@ const RecentWork: React.FC = () => {
           onClick={nextSlide}
           className="hidden md:flex bg-slate-800 p-2 border-2 border-white hover:bg-slate-700 active:scale-95 transition-all text-white"
         >
-          <i className="hn hn-chevron-right " style={{ fontSize: '32px' }} ></i>
+          <i className="hn hn-chevron-right " style={{ fontSize: "32px" }}></i>
         </button>
       </div>
     </section>

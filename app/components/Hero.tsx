@@ -23,10 +23,10 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center items-center relative p-4 pt-24 md:pt-4"
+      className="min-h-screen flex flex-col justify-center items-center relative p-4 pt-4 md:pt-4" // EXPERIMENT: Adjust 'pt-16' to change the distance from the navbar on phone view (e.g., pt-12 for less gap, pt-20 for more)
     >
       {/* Avatar Section */}
-      <div className="mb-0.5">
+      <div className="mb-2">
         <PixelAvatar />
       </div>
       <div className="bg-retro-bg/80 border-4 border-white p-6 sm:p-10 max-w-5xl w-full shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] relative z-10 text-center flex flex-col items-center">
