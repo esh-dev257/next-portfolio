@@ -1,5 +1,6 @@
 import "./globals.css";
 import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
+import CustomCursor from "./components/CustomCursor";
 
 export const metadata = {
   title: "Eshita Bhawsar | Full Stack Developer",
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-retro-bg text-retro-comment font-retro min-h-screen">
+        <CustomCursor />
         {children}
       </body>
     </html>

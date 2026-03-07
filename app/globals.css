@@ -4,48 +4,34 @@
 
 /* Global body style */
 body {
-  background-color: #1a1b26;
+  /* #02151c matches the darkest city layer — visible after the parallax scrolls away */
+  background-color: #02151c;
   color: #f8f8f2;
   font-family: 'VT323', monospace;
+  /* Hide the native cursor — CustomCursor component renders the pixel cursors */
+  cursor: none;
 }
 
-/* Calming Pixel Art Landscape Background */
-.pixel-bg {
+/* Ensure native cursor stays hidden on all elements */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* CRT scanline overlay — sits above the parallax city */
+.scanlines {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
-  background-image: url('/Calming pixel art landscape.jpg');
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
-}
-
-/* Dark overlay + scanlines for readability and retro feel */
-.pixel-bg::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+  z-index: 1;
   background:
-    /* Dark overlay to keep text readable */
-    linear-gradient(
-      to bottom,
-      rgba(26, 27, 38, 0.7) 0%,
-      rgba(26, 27, 38, 0.55) 40%,
-      rgba(26, 27, 38, 0.4) 70%,
-      rgba(26, 27, 38, 0.3) 100%
-    ),
-    /* CRT scanlines */
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.08) 2px,
-      rgba(0, 0, 0, 0.08) 4px
+      rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.06) 4px
     );
-  background-size: 100% 100%, 100% 4px;
+  background-size: 100% 4px;
 }
 
 /* Custom Scrollbar */
