@@ -389,15 +389,15 @@ const Projects: React.FC = () => {
             </div>
 
             <p className="font-retro text-xl text-gray-300 mb-6 leading-relaxed">
-              Real-time multiplayer party game for up to 20 players with
-              live drawing sync via WebSockets. Features anonymous voting,
-              dynamic scoring, a full drawing canvas with brush tools and
-              flood fill, and reconnection handling with rate limiting.
+              Real-time multiplayer party game for up to 20 players with live
+              drawing sync via WebSockets. Features anonymous voting, dynamic
+              scoring, a full drawing canvas with brush tools and flood fill,
+              and reconnection handling with rate limiting.
             </p>
 
             <div className="flex gap-4">
               <a
-                href="https://scribblpro.onrender.com/"
+                href="https://dooduel.onrender.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
